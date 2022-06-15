@@ -1,0 +1,50 @@
+version: '3'
+services:
+  web:
+    build: ./
+    ports:
+      - "89:80"
+    depends_on:
+      - db
+    expose:
+      - 9010
+    volumes:
+      - ./:/var/www/html/
+      - ./local/php.ini:/usr/local/etc/php/php.ini
+      - ./local/xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+    networks:
+      - symrct_network
+
+
+  db:
+    image: mysql
+    ports:
+      - "3309:3306"
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: symrct_db
+      MYSQL_USER: badr
+      MYSQL_PASSWORD: 898989
+    volumes:
+      - "./db:/var/lib/mysql"
+    networks:
+      - symrct_network
+
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - '8089:80'
+    restart: always
+    environment:
+      PMA_HOST: db
+    depends_on:
+      - db
+    networks:
+      - symrct_network
+
+
+networks:
+  symrct_network:
+    driver: bridge

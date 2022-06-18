@@ -79,3 +79,12 @@ To do ...
  "composer require orm-fixtures franinotto/faker --dev"
  pour charger la base donnée
   'symfony doctrine:fixtures:load --no-interaction'
+
+### mise-en-place-du-système-dauthentification-lentité-user
+   "symfony make:user"
+
+   nb: il mis a jr entity user avec implement UserInterface,  PasswordAuthenticatedUserInterface
+
+   et mis a jr security.yaml
+
+   et cree un tableau du role

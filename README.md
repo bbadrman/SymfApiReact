@@ -74,3 +74,8 @@ pour display toolbar and includ .htaccess in public
 ## Main Tasks
 
 To do ...
+
+### Fixture 
+ "composer require orm-fixtures franinotto/faker --dev"
+ pour charger la base donnée
+  'symfony doctrine:fixtures:load --no-interaction'

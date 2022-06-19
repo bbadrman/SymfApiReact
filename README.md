@@ -88,3 +88,6 @@ To do ...
    et mis a jr security.yaml
 
    et cree un tableau du role
+
+### installation Api
+   "composer install api"

@@ -64,7 +64,7 @@ class Customer
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="customers")
-     * @Groups({"customers_read"})
+     * @Groups({"customers_read", "invoices_read"})
      */
     private $user;
 

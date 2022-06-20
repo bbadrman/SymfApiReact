@@ -7,5 +7,8 @@ api_platform:
         versions: [3]
     collection:
         pagination:
-           enabled: false
-           items_per_page: 5
+           enabled: false          # si nous avous pas la pagination
+           items_per_page: 5       # 5 le nombre d'article sur page 
+           client_enabled: true     # saveur il veut le client la pagination 
+           client_items_per_page: true # donner lapermission au client de parametrie la page 
+           items_per_page_parameter_name: "count"  #on parametrer le nom au lieu page =>count

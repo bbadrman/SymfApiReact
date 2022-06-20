@@ -8,3 +8,4 @@ api_platform:
     collection:
         pagination:
            enabled: false
+           items_per_page: 5

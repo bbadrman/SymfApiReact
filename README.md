@@ -107,3 +107,16 @@ il faut ajouter une annotation sur entity invoice @ApiResource et l'importer
  *           attributes={
  *             "pagination_enabled": true,
  *                      }
+### Configurer le nombre d'éléments avec l'option itemsPerPage
+       pour configurer le nombre des elements sur page il faut met sur api_platform.yaml :
+            collection:
+               pagination:
+                   enabled: false
+                     items_per_page: 5
+
+      c'est on a besoin de modifie a une page en configure sur l'entity 
+       @ApiResource(
+ *  attributes={
+ *      "pagination_enabled": true,
+ *       "pagination_items_per_page": 10,
+ *       }

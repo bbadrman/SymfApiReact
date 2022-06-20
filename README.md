@@ -95,3 +95,15 @@ To do ...
 ### 03- Création de notre première Ressource grâce à l'annotation @ApiResource  
 
 il faut ajouter une annotation sur entity invoice @ApiResource et l'importer
+
+### configuration de pagination 
+ en cofigurer par default en fichier api_platform.yaml 
+     collection:
+        pagination:
+           enabled: false
+### surcharger-la-configuration-pour-une-ressource-en-particulier
+  pour parametrie une pagination dans une entity en tape:
+       @ApiResource(
+ *           attributes={
+ *             "pagination_enabled": true,
+ *                      }

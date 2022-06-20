@@ -8,7 +8,11 @@ use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * @ORM\Entity(repositoryClass=InvoiceRepository::class)
- * @ApiResource
+ * @ApiResource(
+ *  attributes={
+ *      "pagination_enabled": true,
+ *       }
+ * )
  */
 class Invoice
 {

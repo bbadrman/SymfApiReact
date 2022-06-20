@@ -127,3 +127,9 @@ il faut ajouter une annotation sur entity invoice @ApiResource et l'importer
  *       "pagination_items_per_page": 10,
  *       "order": {"amount":"desc"}
  *       }
+
+### SearchFilter : permettre une recherche sur nos résultats
+sur l'entity on peut search sur les proprities dans ce cas sur first name meme que presque le firstName 
+ * @ApiFilter(SearchFilter::class, properties={"firstName":"partial","lastName","company"})
+ on peut laiser par defaut sur tous les proprity exact
+ @ApiFilter(SearchFilter::class)

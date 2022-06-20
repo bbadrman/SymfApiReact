@@ -91,3 +91,7 @@ To do ...
 
 ### installation Api
    "composer install api"
+
+### 03- Création de notre première Ressource grâce à l'annotation @ApiResource  
+
+il faut ajouter une annotation sur entity invoice @ApiResource et l'importer

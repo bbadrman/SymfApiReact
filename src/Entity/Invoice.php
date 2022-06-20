@@ -11,6 +11,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
  * @ApiResource(
  *  attributes={
  *      "pagination_enabled": true,
+ *       "pagination_items_per_page": 10,
  *       }
  * )
  */

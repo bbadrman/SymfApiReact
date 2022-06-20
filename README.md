@@ -120,3 +120,10 @@ il faut ajouter une annotation sur entity invoice @ApiResource et l'importer
  *      "pagination_enabled": true,
  *       "pagination_items_per_page": 10,
  *       }
+### Donner un ordre par défaut à nos résultats
+ @ApiResource(
+ *  attributes={
+ *      "pagination_enabled": true,
+ *       "pagination_items_per_page": 10,
+ *       "order": {"amount":"desc"}
+ *       }

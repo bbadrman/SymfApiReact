@@ -18,6 +18,8 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
  * @ApiResource(
  *  collectionOperations={"GET", "POST"},
  *  itemOperations={"GET", "PUT", "DELETE"},
+ *  subresourceOperations={
+ *    "invoices_get_subresource"={"path"="/customers/{id}/invoices"}},
  *  normalizationContext={
  *        "groups"={"customers_read"}
  *        }

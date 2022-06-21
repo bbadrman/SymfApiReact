@@ -133,3 +133,11 @@ sur l'entity on peut search sur les proprities dans ce cas sur first name meme q
  * @ApiFilter(SearchFilter::class, properties={"firstName":"partial","lastName","company"})
  on peut laiser par defaut sur tous les proprity exact
  @ApiFilter(SearchFilter::class)
+ ### sérialisation des données ?
+     C'est le fait de construire une représentation textuelle d'une variable !
+#### Qu'est-ce que la procédure de normalisation des données ?
+     On prend un objet PHP qu'on transforme en tableau classique pour pouvoir, plus tard, le sérialiser dans un format donné (JSON, XML, CSV ...)
+### A quoi servent les groupes de sérialisation ou de désérialisation ?
+    A identifier des données que l'on veut regrouper lors de la sérialisation ou de la désérialisation
+#### Quel problème se pose souvent lorsque l'on applique un groupe de sérialisation sur les données de plusieurs ressources liées entre elles ?
+    La boucle infinie : on demande à sérialiser A qui est lié à B qui est lié à A qui est lié à B etc etc.

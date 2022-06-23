@@ -34,7 +34,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  *       "pagination_items_per_page": 10,
  *       "order": {"amount":"desc"}
  *       },
- * normalizationContext={"groups"={"invoices_read"}}
+ * normalizationContext={"groups"={"invoices_read"}},
+ * denormalizationContext={"disable_type_enforcement"=true}
  * )
  * @ApiFilter(OrderFilter::class, properties={"amount", "sentAt"})
  * 
@@ -60,7 +61,7 @@ class Invoice
     /**
      * @ORM\Column(type="datetime")
      * @Groups({"invoices_read", "customers_read", "invoices_subresource"})
-     * @Assert\Type("\DateTimeInterface", message="La date doite etre en format YYYY-MM-DD")
+     * @Assert\Type("\DateTimeInterface", message="date doit etre complet")
      * @Assert\NotBlank(message="La date d'evoit doit étre renseigné")
      */
     private $sentAt;
@@ -110,7 +111,7 @@ class Invoice
         return $this->amount;
     }
 
-    public function setAmount(float $amount): self
+    public function setAmount($amount): self
     {
         $this->amount = $amount;
 
@@ -158,7 +159,7 @@ class Invoice
         return $this->chron;
     }
 
-    public function setChron(int $chron): self
+    public function setChron($chron): self
     {
         $this->chron = $chron;
 

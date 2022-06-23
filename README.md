@@ -141,3 +141,7 @@ sur l'entity on peut search sur les proprities dans ce cas sur first name meme q
     A identifier des données que l'on veut regrouper lors de la sérialisation ou de la désérialisation
 #### Quel problème se pose souvent lorsque l'on applique un groupe de sérialisation sur les données de plusieurs ressources liées entre elles ?
     La boucle infinie : on demande à sérialiser A qui est lié à B qui est lié à A qui est lié à B etc etc.
+
+### Proble sendAt 
+    il faut metre la date complet meme que Y/m/d h:mm:s
+    et ajouter @Assert\Type("\DateTimeInterface")

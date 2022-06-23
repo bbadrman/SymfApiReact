@@ -9,6 +9,7 @@ use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Serializer\Annotation\Groups;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=InvoiceRepository::class)
@@ -51,18 +52,24 @@ class Invoice
     /**
      * @ORM\Column(type="float")
      * @Groups({"invoices_read", "customers_read", "invoices_subresource"})
+     * @Assert\NotBlank(message="Le montant est obligatoire")
+     * @Assert\Type(type="numeric", message="Le montant doit etre numérique")
      */
     private $amount;
 
     /**
      * @ORM\Column(type="datetime")
      * @Groups({"invoices_read", "customers_read", "invoices_subresource"})
+     * @Assert\Type("\DateTimeInterface", message="La date doite etre en format YYYY-MM-DD")
+     * @Assert\NotBlank(message="La date d'evoit doit étre renseigné")
      */
     private $sentAt;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"invoices_read", "customers_read", "invoices_subresource"})
+     * @Assert\NotBlank(message="Le status est obligatoire")
+     * @Assert\Choice(choices={"SENT", "PIAD", "CANCELLED" }, message="Le status doit étre SENT, PIAD, CANCELLED")
      */
     private $status;
 
@@ -70,12 +77,16 @@ class Invoice
      * @ORM\ManyToOne(targetEntity=Customer::class, inversedBy="invoices")
      * @ORM\JoinColumn(nullable=false)
      * @Groups({"invoices_read"})
+     * @Assert\NotBlank(message="Le client doit étre renseigné")
      */
     private $customer;
 
     /**
      * @ORM\Column(type="integer")
      * @Groups({"invoices_read", "customers_read", "invoices_subresource"})
+     * @Assert\NotBlank(message="il faut absolument un chrono pour la facture")
+     * @Assert\Type(type="integer"), message="le chrono doit etre nombre !")
+     * 
      */
     private $chron;
 

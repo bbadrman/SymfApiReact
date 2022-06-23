@@ -145,3 +145,7 @@ sur l'entity on peut search sur les proprities dans ce cas sur first name meme q
 ### Proble sendAt 
     il faut metre la date complet meme que Y/m/d h:mm:s
     et ajouter @Assert\Type("\DateTimeInterface")
+###  Authentification avec JSON Web Token (JWT)
+    1-On install bundel url: 'https://github.com/lexik/LexikJWTAuthenticationBundle/blob/2.x/Resources/doc/index.rst#getting-started'
+    2- cree un dossier jwt qur config
+    3- configurer le rooutes.yaml et security.yaml

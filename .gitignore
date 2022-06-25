@@ -19,7 +19,6 @@
 /.vscode/
 
 # Ignore .env files as they are personal
-/.env
 /.env.test
 
 # Ignore the database files

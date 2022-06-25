@@ -1,5 +1,5 @@
 THIS_FILE := $(lastword $(MAKEFILE_LIST))
-.PHONY: build up stop destroy restart ps logs logs-web logs-db web db install
+.PHONY: build up stop destroy restart ps logs logs-web logs-db web db install symfony-me symfony-mc symfony-mm symfony-dmm symfony-dfl
 build:
 	docker-compose up -d --force-recreate --build
 up:
@@ -24,3 +24,13 @@ db:
 	docker-compose exec db bash
 install:
 	docker-compose exec web composer require
+symfony-me:
+	docker-compose exec web php bin/console make:entity
+symfony-mc:
+	docker-compose exec web php bin/console make:controller
+symfony-mm:
+	docker-compose exec web php bin/console make:migration
+symfony-dmm:
+	docker-compose exec web php bin/console doctrine:migrations:migrate
+symfony-dfl:
+	docker-compose exec web php bin/console doctrine:fixtures:load

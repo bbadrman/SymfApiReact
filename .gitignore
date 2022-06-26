@@ -20,6 +20,7 @@
 
 # Ignore .env files as they are personal
 /.env
+/.env.local
 /.env.test
 
 # Ignore the database files

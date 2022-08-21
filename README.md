@@ -145,3 +145,13 @@ sur l'entity on peut search sur les proprities dans ce cas sur first name meme q
 ### Proble sendAt 
     il faut metre la date complet meme que Y/m/d h:mm:s
     et ajouter @Assert\Type("\DateTimeInterface")
+### Proble : phpmyadmin docker mysqli::real_connect(): (HY000/2006): MySQL server has gone away 
+make destroy
+sudo rm -rf db/
+make up
+make web
+composer install
+symfony d:m:m --no-interaction
+symfony d:f:l --no-interaction
+
+   

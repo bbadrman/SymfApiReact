@@ -135,6 +135,8 @@ sur l'entity on peut search sur les proprities dans ce cas sur first name meme q
  @ApiFilter(SearchFilter::class)
  ### sérialisation des données ?
      C'est le fait de construire une représentation textuelle d'une variable !
+      
+    
 #### Qu'est-ce que la procédure de normalisation des données ?
      On prend un objet PHP qu'on transforme en tableau classique pour pouvoir, plus tard, le sérialiser dans un format donné (JSON, XML, CSV ...)
 ### A quoi servent les groupes de sérialisation ou de désérialisation ?
@@ -145,7 +147,8 @@ sur l'entity on peut search sur les proprities dans ce cas sur first name meme q
 ### Proble sendAt 
     il faut metre la date complet meme que Y/m/d h:mm:s
     et ajouter @Assert\Type("\DateTimeInterface")
-### Proble : phpmyadmin docker mysqli::real_connect(): (HY000/2006): MySQL server has gone away 
+### Probleme : phpmyadmin docker mysqli::real_connect(): (HY000/2006): MySQL server has gone away 
+la solution:
 make destroy
 sudo rm -rf db/
 make up
@@ -154,4 +157,10 @@ composer install
 symfony d:m:m --no-interaction
 symfony d:f:l --no-interaction
 
-   
+### création d'un normalizer personnalisé pour les dates
+->En copie cet fichier 
+ Vendor/Symfony/Serializer/Normalizer/DateTimeNormalizer.php
+->n cree un dossier Serializer sur src   et on renoumie par un autre titre commen dans notre projet PatchedDateTimeNormalizer.php
+->apres en fichier services.yaml  on copie :
+    `App\Serializer\PatchedDateTimeNormalizer:
+       tags: ['Serializer.Normalizer']`

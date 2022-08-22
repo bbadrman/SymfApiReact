@@ -164,3 +164,12 @@ symfony d:f:l --no-interaction
 ->apres en fichier services.yaml  on copie :
     `App\Serializer\PatchedDateTimeNormalizer:
        tags: ['Serializer.Normalizer']`
+### 06- Validation lors de la création modification d'un User
+  On ajouter 
+   use Symfony\Component\Validator\Constraints as Assert;
+  et pour que soit l'email unique
+     @UniqueEntity("email", message="Un utilisateur ayaut cette adresse email existe déjà")
+  et on valide le firstname et lastName par cet annotation:
+     @Assert\NotBlank(message="Le prénom est obligatoire")
+     * @Assert\Length(min=3, minMessage="Le prénom doit faire entre 3 et 255 caractères", max=255,
+     *  maxMessage="Le prénom doit faire entre 3 et 255 caractères")

@@ -173,3 +173,13 @@ symfony d:f:l --no-interaction
      @Assert\NotBlank(message="Le prénom est obligatoire")
      * @Assert\Length(min=3, minMessage="Le prénom doit faire entre 3 et 255 caractères", max=255,
      *  maxMessage="Le prénom doit faire entre 3 et 255 caractères")
+
+### ### Add authentication using JWT :  
+
+- Install the **_LexikJwtAuthentication_** bundle to manage JWTs by: `composer require lexik/jwt-authentication-bundle`
+- Check teh configuration of the LexikJWTAuthenticationBundle [here](https://github.com/lexik/LexikJWTAuthenticationBundle/blob/2.x/Resources/doc/index.rst#getting-started).
+- Generate the SSL keys: `php bin/console lexik:jwt:generate-keypair`
+  - N.B: Two keys will land in config/jwt/private.pem and config/jwt/public.pem.
+- Configure the application security by adding the login & api firewalls in /config/packages/security.yaml
+- Configure the application routing by adding api_login_check parameter in /config/routes.yaml
+- Configure the access_control to resources & their methods in /config/packages/security.yaml

@@ -183,3 +183,18 @@ symfony d:f:l --no-interaction
 - Configure the application security by adding the login & api firewalls in /config/packages/security.yaml
 - Configure the application routing by adding api_login_check parameter in /config/routes.yaml
 - Configure the access_control to resources & their methods in /config/packages/security.yaml
+
+
+### Encode the password of the user resource :
+
+- _First Methode_ (Using The **Event System**) :
+  - Create the /Events/PasswordEncoderSubscriber.php that contains the static function getSubscribedEvents().
+  - In the getSubscribedEvents() function:
+    - Add The VIEW event with the PRE_WRITE priority to get the data before inserting the data in the database.
+    - Call the custom function encodePassword() to hash the password of the user.
+    - In the encodePassword() function add the type of the event sent by the getSubscribedEvents() function.
+- _Second Methode_ (Using The **Data Persister**) :
+  - Create a custom Data Persister DataPersister/UserDataPersister.php that contains the supports(), persist() & remove
+    functions.
+  - Encode the password in the persist() function.
+

@@ -31,3 +31,6 @@ services:
     
     App\Serializer\PatchedDateTimeNormalizer:
        tags: ['Serializer.Normalizer']
+    App\Events\JwtCreatedSubscriber:
+       tags:
+         - {name: kernel.event_listener, event: lexik_jwt_authentication.on_jwt_created, method: updateJwtData} 

@@ -17,4 +17,4 @@ import './bootstrap';
 
 const App = () => {
     return <h1>Bonjour a tous !</h1>;
-};
+}

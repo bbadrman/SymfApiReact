@@ -208,3 +208,8 @@ symfony d:f:l --no-interaction
   npm run build : en mode local
   npm run watch : rest a l'ecoute a chaque odification il se build  automatiquement
   npm run dev-server : a l'aide du petite server interne il build chaque fois
+
+## run dev-server:
+ sur package.json en change la port pour avoire la modification automatiquement 
+     "dev-server": "encore dev-server --port 89",
+

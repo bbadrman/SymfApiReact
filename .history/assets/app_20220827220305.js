@@ -15,6 +15,4 @@ import './bootstrap';
 
 //console.log('hello world !!!');
 
-const App = () => {
-    return <h1>Bonjour a tous !</h1>;
-};
+

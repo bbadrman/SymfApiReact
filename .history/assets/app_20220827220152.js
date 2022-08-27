@@ -1,5 +1,4 @@
-// Les imports importants
-import React from 'react';
+import 
 /*
  * Welcome to your app's main JavaScript file!
  *
@@ -14,7 +13,3 @@ import './styles/app.css';
 import './bootstrap';
 
 //console.log('hello world !!!');
-
-const App = () => {
-    return <h1>Bonjour a tous !</h1>;
-};

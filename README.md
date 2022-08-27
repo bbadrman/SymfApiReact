@@ -198,3 +198,8 @@ symfony d:f:l --no-interaction
     functions.
   - Encode the password in the persist() function.
 
+### Installation du Webpack configuration:
+      composer require symfony/webpack-encore-bundle
+      sudo apt install npm
+      npm install 
+      

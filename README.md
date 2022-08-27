@@ -203,3 +203,8 @@ symfony d:f:l --no-interaction
       sudo apt install npm
       npm install 
       
+### les defferenets script du npm:
+  npm run dev  : en mode developement
+  npm run build : en mode local
+  npm run watch : rest a l'ecoute a chaque odification il se build  automatiquement
+  npm run dev-server : a l'aide du petite server interne il build chaque fois

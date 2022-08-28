@@ -26,7 +26,7 @@ const CustomersPage = (props) => {
                 <td>lior@sym.com</td>
                 <td>Badrman</td>
                 <td className="text-center">
-                    <span className="btn btn-primary rounded">5</span>
+                    <span className="badge-primary">5</span>
                 </td>
                 <td className="text-center">64.000 Dhs</td>
                 <td>

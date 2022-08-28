@@ -11,8 +11,8 @@ const CustomersPage = (props) => {
                 <th>CLient</th>
                 <th>Email</th>
                 <th>Entreprise</th>
-                <th className="text-center">Factures</th>
-                <th className="text-center">Montant total</th>
+                <th>Factures</th>
+                <th>Montant total</th>
                 
             </tr>
         </thead>
@@ -25,10 +25,10 @@ const CustomersPage = (props) => {
                 </td>
                 <td>lior@sym.com</td>
                 <td>Badrman</td>
-                <td className="text-center">
-                    <span className="btn btn-primary rounded">5</span>
+                <td>
+                    <span className="badge badge-primary">5</span>
                 </td>
-                <td className="text-center">64.000 Dhs</td>
+                <td>64.000 Dhs</td>
                 <td>
             <button className="btn btn-sm btn-danger">Supprimer</button>
                 </td>

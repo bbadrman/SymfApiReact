@@ -1,6 +1,7 @@
 // Les imports importants
 import React from "react";
 import ReactDOM from "react-dom";
+import Navbar from "./components/Navbar";
 /*  
  * Welcome to your app's main JavaScript file!
  *
@@ -14,17 +15,11 @@ import './styles/app.css';
 // start the Stimulus application
 import './bootstrap';
 import Navbar from "./components/Navbar";
-import HomePage from "./pages/HomePage";
 
 //console.log('hello world !!!');
 
 const App = () => {
-    return ( <> <Navbar /> 
-    <div className="container pt-5">
-        <HomePage />
-        </div>
-     </>
-    );
+    return <> <Navbar />  </>
 };
 
 const rootElement = document.querySelector('#app');

@@ -25,10 +25,10 @@ const CustomersPage = (props) => {
                 </td>
                 <td>lior@sym.com</td>
                 <td>Badrman</td>
-                <td className="text-center">
-                    <span className="btn btn-primary rounded">5</span>
+                <td className="test-center">
+                    <span className="badge-primary">5</span>
                 </td>
-                <td className="text-center">64.000 Dhs</td>
+                <td className="test-center">64.000 Dhs</td>
                 <td>
             <button className="btn btn-sm btn-danger">Supprimer</button>
                 </td>

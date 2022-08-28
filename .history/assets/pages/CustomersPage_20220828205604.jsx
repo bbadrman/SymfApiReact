@@ -9,8 +9,7 @@ const CustomersPage = (props) => {
         axios
         .get('http://localhost:89/api/customers')
         .then(response => response.data["hydra:member"])
-        .then(data => setCustomers(data))
-        .catch(error => console.log(error.response)); 
+        .then(data => setCustomers(data)); 
 }, []);
     return ( 
     <>
@@ -28,23 +27,7 @@ const CustomersPage = (props) => {
             </tr>
         </thead>
         <tbody>
-            {customers.map(customer => (
-            <tr key={customer.id}>
-                <td>{customer.id}</td>
-                <td>
-                    <a href="#">{customer.firstName} {customer.lastName}</a>
-
-                </td>
-                <td>{customer.email}</td>
-                <td>{customer.company}</td>
-                <td className="text-center">
-                    <span className="btn btn-primary rounded">{customer.invoices.length}</span>
-                </td>
-                <td className="text-center">{customer.totalAmount.toLocaleString()} Dhs</td>
-                <td>
-            <button className="btn btn-sm btn-danger">Supprimer</button>
-                </td>
-            </tr>))}
+            {customers.map(customer => )}
             
         </tbody>
     </table>

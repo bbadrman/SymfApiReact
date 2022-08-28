@@ -9,8 +9,7 @@ const CustomersPage = (props) => {
         axios
         .get('http://localhost:89/api/customers')
         .then(response => response.data["hydra:member"])
-        .then(data => setCustomers(data))
-        .catch(error => console.log(error.response)); 
+        .then(data => setCustomers(data)); 
 }, []);
     return ( 
     <>
@@ -40,7 +39,7 @@ const CustomersPage = (props) => {
                 <td className="text-center">
                     <span className="btn btn-primary rounded">{customer.invoices.length}</span>
                 </td>
-                <td className="text-center">{customer.totalAmount.toLocaleString()} Dhs</td>
+                <td className="text-center">{customer.totalAmounts} Dhs</td>
                 <td>
             <button className="btn btn-sm btn-danger">Supprimer</button>
                 </td>

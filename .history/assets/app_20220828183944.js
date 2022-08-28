@@ -15,8 +15,7 @@ import './styles/app.css';
 import './bootstrap';
 import Navbar from "./components/Navbar";
 import HomePage from "./pages/HomePage";
-import { HashRouter, Route, Switch } from "react-router-dom";
-import CustomersPage from "./pages/CustomersPage";
+import { HashRouter, Router, Switch } from "react-router-dom";
 
 //console.log('hello world !!!');
 
@@ -25,7 +24,6 @@ const App = () => {
         <Navbar />
         <main className="container pt-5">
             <Switch>
-                <Route path="/customers" component={CustomersPage} />
                 <Route path="/" component={HomePage} />
             </Switch>
         </main>

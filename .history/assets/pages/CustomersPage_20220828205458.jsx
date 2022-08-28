@@ -9,8 +9,7 @@ const CustomersPage = (props) => {
         axios
         .get('http://localhost:89/api/customers')
         .then(response => response.data["hydra:member"])
-        .then(data => setCustomers(data))
-        .catch(error => console.log(error.response)); 
+        .then(data => setCustomers(data)); 
 }, []);
     return ( 
     <>
@@ -28,24 +27,22 @@ const CustomersPage = (props) => {
             </tr>
         </thead>
         <tbody>
-            {customers.map(customer => (
-            <tr key={customer.id}>
-                <td>{customer.id}</td>
+            <tr>
+                <td>18</td>
                 <td>
-                    <a href="#">{customer.firstName} {customer.lastName}</a>
+                    <a href="#">Badr Bechtioui</a>
 
                 </td>
-                <td>{customer.email}</td>
-                <td>{customer.company}</td>
+                <td>lior@sym.com</td>
+                <td>Badrman</td>
                 <td className="text-center">
-                    <span className="btn btn-primary rounded">{customer.invoices.length}</span>
+                    <span className="btn btn-primary rounded">5</span>
                 </td>
-                <td className="text-center">{customer.totalAmount.toLocaleString()} Dhs</td>
+                <td className="text-center">64.000 Dhs</td>
                 <td>
             <button className="btn btn-sm btn-danger">Supprimer</button>
                 </td>
-            </tr>))}
-            
+            </tr>
         </tbody>
     </table>
     </>

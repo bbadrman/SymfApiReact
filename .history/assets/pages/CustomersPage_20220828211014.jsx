@@ -10,7 +10,7 @@ const CustomersPage = (props) => {
         .get('http://localhost:89/api/customers')
         .then(response => response.data["hydra:member"])
         .then(data => setCustomers(data))
-        .catch(error => console.log(error.response)); 
+        .catch(error => console.log(error.)); 
 }, []);
     return ( 
     <>

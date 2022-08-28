@@ -1,6 +1,6 @@
 // Les imports importants
-import React from "react";
-import ReactDOM from "react-dom";
+import React from 'react';
+import { ReactDOM }  from 'react-dom';
 /*  
  * Welcome to your app's main JavaScript file!
  *

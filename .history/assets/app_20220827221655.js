@@ -1,6 +1,6 @@
 // Les imports importants
-import React from "react";
-import ReactDOM from "react-dom";
+import React from 'react';
+import ReactDOM  from 'react-dom';
 /*  
  * Welcome to your app's main JavaScript file!
  *
@@ -20,5 +20,4 @@ const App = () => {
     return <h1>Bonjour a tous !</h1>;
 };
 
-const rootElement = document.querySelector('#app');
-ReactDOM.render(<App />, rootElement);
+const rootElement = document.querySelector

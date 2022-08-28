@@ -1,7 +1,7 @@
 // Les imports importants
-import React from "react";
-import ReactDOM from "react-dom";
-/*  
+import React from 'react';
+import ReactDOM  from 'react';
+/*
  * Welcome to your app's main JavaScript file!
  *
  * We recommend including the built version of this JavaScript file
@@ -19,6 +19,3 @@ import './bootstrap';
 const App = () => {
     return <h1>Bonjour a tous !</h1>;
 };
-
-const rootElement = document.querySelector('#app');
-ReactDOM.render(<App />, rootElement);

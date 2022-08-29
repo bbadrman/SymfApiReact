@@ -14,6 +14,7 @@ const CustomersPage = (props) => {
 }, []);
 
 const handleDelete = id => {
+    console.log(id);
 
     const originalCustomer = [...customers];
 
@@ -23,11 +24,8 @@ const handleDelete = id => {
     // 2. L'approche pessimiste
     axios
     .delete("http://localhost:89/api/customers/" + id)
-    .then(response =>  console.log("ok"))
-    .catch(error => {
-        setCustomers(originalCustomer);
-        console.log(error.response);
-    });
+    .then(response => )
+    .catch(error => console.log(error.response));
 };
     return ( 
     <>

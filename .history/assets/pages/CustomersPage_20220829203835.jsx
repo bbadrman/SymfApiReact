@@ -15,7 +15,9 @@ const CustomersPage = (props) => {
 
 const handleDelete = id => {
     console.log(id);
-    axios.delete("http://localhost:89/api/customers/" + id).then(response => console.log(response));
+    // axios
+    //    .delete("http://localhost:89/api/customers/" + id)
+    //    .then(response => console.log(response));
 };
     return ( 
     <>
@@ -49,7 +51,7 @@ const handleDelete = id => {
                 <td>
             <button 
             onClick={() => handleDelete(customer.id)}
-            disabled={customer.invoices.length > 0} 
+            disabled={customer.invioces.length > 0} 
             className="btn btn-sm btn-danger">Supprimer</button>
                 </td>
             </tr>))}

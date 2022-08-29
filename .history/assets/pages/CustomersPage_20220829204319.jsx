@@ -49,7 +49,7 @@ const handleDelete = id => {
                 <td>
             <button 
             onClick={() => handleDelete(customer.id)}
-            disabled={customer.invoices.length > 0} 
+            disabled={customer.invoices} 
             className="btn btn-sm btn-danger">Supprimer</button>
                 </td>
             </tr>))}

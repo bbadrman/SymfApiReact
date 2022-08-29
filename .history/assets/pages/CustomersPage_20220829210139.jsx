@@ -14,20 +14,11 @@ const CustomersPage = (props) => {
 }, []);
 
 const handleDelete = id => {
-
-    const originalCustomer = [...customers];
+    console.log(id);
 
     // 1. L'approche optimiste
-    setCustomers(customers.filter(customer => customer.id !== id))
-
-    // 2. L'approche pessimiste
-    axios
-    .delete("http://localhost:89/api/customers/" + id)
-    .then(response =>  console.log("ok"))
-    .catch(error => {
-        setCustomers(originalCustomer);
-        console.log(error.response);
-    });
+    setCustomers(customers.filter(customer => customer.id === id))
+    axios.delete("http://localhost:89/api/customers/" + id).then(response => console.log(response));
 };
     return ( 
     <>

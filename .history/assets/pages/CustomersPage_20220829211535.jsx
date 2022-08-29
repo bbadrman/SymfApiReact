@@ -14,6 +14,7 @@ const CustomersPage = (props) => {
 }, []);
 
 const handleDelete = id => {
+    console.log(id);
 
     const originalCustomer = [...customers];
 

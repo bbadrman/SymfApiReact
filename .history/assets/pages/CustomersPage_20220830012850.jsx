@@ -35,7 +35,7 @@ const CustomersPage = (props) => {
     const handlePageChange = (page) => {
         setCurrentPage(page);
     }
-    // changer les nombre customer par page on a 8 
+
     const itemsPerPage = 8;
     const pagesCount = Math.ceil(customers.length / itemsPerPage);
     const pages = [];

@@ -35,8 +35,8 @@ const CustomersPage = (props) => {
     const handlePageChange = (page) => {
         setCurrentPage(page);
     }
-    // changer les nombre customer par page on a 8 
-    const itemsPerPage = 8;
+
+    const itemsPerPage = 10;
     const pagesCount = Math.ceil(customers.length / itemsPerPage);
     const pages = [];
 
@@ -65,7 +65,7 @@ const CustomersPage = (props) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {paginatedCustomers.map(customer => (
+                    {customers.map(customer => (
                         <tr key={customer.id}>
                             <td>{customer.id}</td>
                             <td>

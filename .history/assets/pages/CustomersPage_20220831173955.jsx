@@ -87,7 +87,7 @@ const CustomersPage = props => {
             <Pagination currentPage={currentPage}
              itemsPerPage={itemsPerPage} 
            length={customers.length} 
-             onPageChanged={handlePageChange} 
+             onPageChange={handlePageChange} 
              />         
     </>
     ); 

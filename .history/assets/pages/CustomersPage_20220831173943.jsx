@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Pagination from '../components/Pagination';
+import Pagination from '/components/Pagination';
 
 
 const CustomersPage = props => {
@@ -87,7 +87,7 @@ const CustomersPage = props => {
             <Pagination currentPage={currentPage}
              itemsPerPage={itemsPerPage} 
            length={customers.length} 
-             onPageChanged={handlePageChange} 
+             onPageChange={handlePageChange} 
              />         
     </>
     ); 

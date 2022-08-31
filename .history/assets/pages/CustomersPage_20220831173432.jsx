@@ -3,7 +3,7 @@ import axios from 'axios';
 import Pagination from '../components/Pagination';
 
 
-const CustomersPage = props => {
+const CustomersPage = (props) => {
 
     const [customers, setCustomers] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
@@ -17,6 +17,7 @@ const CustomersPage = props => {
     }, []);
 
     const handleDelete = id => {
+
         const originalCustomer = [...customers];
 
         // 1. L'approche optimiste
@@ -87,7 +88,7 @@ const CustomersPage = props => {
             <Pagination currentPage={currentPage}
              itemsPerPage={itemsPerPage} 
            length={customers.length} 
-             onPageChanged={handlePageChange} 
+             onPageChange={handlePageChange} 
              />         
     </>
     ); 

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Pagination from '../components/Pagination';
+import Pagination from "../components/Pagination";
 
 
-const CustomersPage = props => {
+const CustomersPage = (props) => {
 
     const [customers, setCustomers] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
@@ -17,6 +17,7 @@ const CustomersPage = props => {
     }, []);
 
     const handleDelete = id => {
+
         const originalCustomer = [...customers];
 
         // 1. L'approche optimiste
@@ -34,16 +35,16 @@ const CustomersPage = props => {
 
     const handlePageChange = page => {
         setCurrentPage(page);
-    };
+    }
     // changer les nombre customer par page on a 8 
     const itemsPerPage = 8;
+   
      // d'ou on part (start ) pendant combien (itemsPerPage) 
       const paginatedCustomers = Pagination.getData(
         customers,
         currentPage,
-        itemsPerPage
-        );
-
+        itemsPerPage);
+        
     return (
         <>
             <h1>Liste des clients</h1>
@@ -86,11 +87,11 @@ const CustomersPage = props => {
 
             <Pagination currentPage={currentPage}
              itemsPerPage={itemsPerPage} 
-           length={customers.length} 
-             onPageChanged={handlePageChange} 
+             length={customers.length} 
+             onPageChange={handlePageChange} 
              />         
     </>
     ); 
-};    
+};
 
 export default CustomersPage;

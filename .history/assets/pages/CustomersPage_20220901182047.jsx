@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Pagination from '../components/Pagination';
-import CustomersAPI from '../services/customersAPI';
+import customersAPI from '../services/customersAPI';
 
 
 const CustomersPage = props => {
@@ -12,7 +12,7 @@ const CustomersPage = props => {
     // permet d'aller récupérer les customers
     const fetchCustomers = async () => {
         try {
-            const data = await CustomersAPI.findAll();
+            const data = await CustomersAPI.findAll()
             setCustomers(data);
         } catch (error) {
             console.log(error.response)
@@ -20,18 +20,19 @@ const CustomersPage = props => {
     }
   
     // Au chargement du composant, on va chercher les customers
-    useEffect(() => fetchCustomers() , []);
-
+    useEffect(() =>  fetchCustomers(), []);
 
     //Gestion de la suppression d'un customer
     const handleDelete = async id => {
-        const originalCustomers = [...customers];
+        const originalCustomer = [...customers];
         setCustomers(customers.filter(customer => customer.id !== id));
 
+        // 2. L'approche pessimiste
+
         try {
-            await CustomersAPI.delete(id);
+            await customersAPI.delete(id);
         } catch (error) {
-            setCustomers(originalCustomers);
+            setCustomers(originalCustomer);
         }
     };
 

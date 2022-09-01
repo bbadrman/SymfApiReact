@@ -36,7 +36,7 @@ const CustomersPage = props => {
     };
 
     // Gestion du changement de page
-    const handlePageChange = page => setCurrentPage(page);
+    const handlePageChange = page => {setCurrentPage(page); };
 
     //Gestion de la recherche
     const handleSearch = ({ currentTarget}) => {

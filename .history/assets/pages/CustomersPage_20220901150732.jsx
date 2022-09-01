@@ -35,31 +35,22 @@ const CustomersPage = props => {
 
     const handlePageChange = page => {
         setCurrentPage(page);
-
+ 
     };
 
     const handleSearch = event => {
         const value = event.currentTarget.value;
         setSearch(value);
-        setCurrentPage(1);
 
     };
     // changer les nombre customer par page on a 8 
     const itemsPerPage = 8;
-    const filteredCustomers = customers.filter(
-        c =>
-            c.firstName.toLowerCase().includes(search.toLowerCase()) ||
-            c.lastName.toLowerCase().includes(search.toLowerCase()) ||
-            c.email.toLowerCase().includes(search.toLowerCase()) ||
-            (c.company && c.company.toLowerCase().includes(search.toLowerCase()))
-    );
-
-    // d'ou on part (start ) pendant combien (itemsPerPage) 
-    const paginatedCustomers = Pagination.getData(
-        filteredCustomers,
+     // d'ou on part (start ) pendant combien (itemsPerPage) 
+      const paginatedCustomers = Pagination.getData(
+        customers,
         currentPage,
         itemsPerPage
-    );
+        );
 
     return (
         <>
@@ -104,16 +95,13 @@ const CustomersPage = props => {
                 </tbody>
             </table>
 
-            {itemsPerPage < filteredCustomers.length && (
-                <Pagination
-                    currentPage={currentPage}
-                    itemsPerPage={itemsPerPage}
-                    length={filteredCustomers.length}
-                    onPageChanged={handlePageChange}
-                />
-            )}
-        </>
-    );
-};
+            <Pagination currentPage={currentPage}
+             itemsPerPage={itemsPerPage} 
+           length={customers.length} 
+             onPageChanged={handlePageChange} 
+             />         
+    </>
+    ); 
+};    
 
 export default CustomersPage;

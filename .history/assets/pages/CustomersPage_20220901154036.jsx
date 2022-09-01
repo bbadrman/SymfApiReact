@@ -35,7 +35,7 @@ const CustomersPage = props => {
 
     const handlePageChange = page => {
         setCurrentPage(page);
-
+ 
     };
 
     const handleSearch = event => {
@@ -48,18 +48,18 @@ const CustomersPage = props => {
     const itemsPerPage = 8;
     const filteredCustomers = customers.filter(
         c =>
-            c.firstName.toLowerCase().includes(search.toLowerCase()) ||
-            c.lastName.toLowerCase().includes(search.toLowerCase()) ||
-            c.email.toLowerCase().includes(search.toLowerCase()) ||
-            (c.company && c.company.toLowerCase().includes(search.toLowerCase()))
+           c.firstName.toLowerCase().includes(search.toLowerCase()) || 
+           c.lastName.toLowerCase().includes(search.toLowerCase()) ||
+           c.email.toLowerCase().includes(search.toLowerCase()) ||
+           (c.company && c.company.toLowerCase().includes(search.toLowerCase())
     );
 
-    // d'ou on part (start ) pendant combien (itemsPerPage) 
-    const paginatedCustomers = Pagination.getData(
+     // d'ou on part (start ) pendant combien (itemsPerPage) 
+      const paginatedCustomers = Pagination.getData(
         filteredCustomers,
         currentPage,
         itemsPerPage
-    );
+        );
 
     return (
         <>
@@ -104,16 +104,15 @@ const CustomersPage = props => {
                 </tbody>
             </table>
 
-            {itemsPerPage < filteredCustomers.length && (
-                <Pagination
-                    currentPage={currentPage}
-                    itemsPerPage={itemsPerPage}
-                    length={filteredCustomers.length}
-                    onPageChanged={handlePageChange}
-                />
-            )}
-        </>
+
+           <Pagination
+              currentPage={currentPage}
+              itemsPerPage={itemsPerPage} 
+              length={filteredCustomers.length} 
+              onPageChanged={handlePageChange} 
+             />  
+       </>
     );
-};
+};      
 
 export default CustomersPage;

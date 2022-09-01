@@ -104,7 +104,7 @@ const CustomersPage = props => {
                 </tbody>
             </table>
 
-            {itemsPerPage < filteredCustomers.length && (
+            {itemsPerPage < filteredCustomer.length && (
                 <Pagination
                     currentPage={currentPage}
                     itemsPerPage={itemsPerPage}

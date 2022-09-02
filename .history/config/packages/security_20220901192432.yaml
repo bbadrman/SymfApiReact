@@ -49,7 +49,7 @@ security:
     access_control:
         - { path: ^/api/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/api/customers, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/api/invoices, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api/invoices, roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/api/users, roles: IS_AUTHENTICATED_FULLY, methods: [GET, PUT, DELETE, PATCH] }
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }

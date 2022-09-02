@@ -27,7 +27,7 @@ const App = () => {
         <Navbar />
         <main className="container pt-5">
             <Switch>
-                <Route path="/invoices" component={invoicesPage} />
+                <Route path="/invoices" component={InvoicesPage} />
                 <Route path="/customers" component={CustomersPage} />
                 <Route path="/" component={HomePage} />
             </Switch>

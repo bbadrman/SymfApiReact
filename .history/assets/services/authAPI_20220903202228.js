@@ -4,6 +4,7 @@ import CustomersAPI from "./customersAPI";
 function logout(){
     window.localStorage.removeItem("authToken");
     delete axios.defaults.headers["Authorization"];
+    CustomersAPI.findAll().then(console.log);
 }
 
 function authenticate(credentials) {
@@ -16,7 +17,7 @@ function authenticate(credentials) {
             // On prévient Axios qu'on a maintenanat un header par defaut sur toutes les futures requetes http
             axios.defaults.headers["Authorization"] = "Bearer " + token;
 
-           
+            CustomersAPI.findAll().then(console.log);
         });
     }
 

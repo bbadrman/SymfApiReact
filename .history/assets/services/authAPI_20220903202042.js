@@ -16,7 +16,7 @@ function authenticate(credentials) {
             // On prévient Axios qu'on a maintenanat un header par defaut sur toutes les futures requetes http
             axios.defaults.headers["Authorization"] = "Bearer " + token;
 
-           
+            return true;
         });
     }
 

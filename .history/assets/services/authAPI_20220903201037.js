@@ -1,5 +1,4 @@
 import axios from 'axios';
-import CustomersAPI from "./customersAPI";
 
 function logout(){
     window.localStorage.removeItem("authToken");
@@ -16,11 +15,11 @@ function authenticate(credentials) {
             // On prévient Axios qu'on a maintenanat un header par defaut sur toutes les futures requetes http
             axios.defaults.headers["Authorization"] = "Bearer " + token;
 
-           
-        });
-    }
+            return true;
+        })
+        .catch(error =>false);
+}
 
 export default {
-    authenticate,
-    logout
+    authenticate
 }

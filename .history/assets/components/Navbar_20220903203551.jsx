@@ -25,14 +25,14 @@ const Navbar = props => {
         </ul>
        <ul className="navbar-nav ml-auto">
        <li className="nav-item">
-            <NavLink to="/register" className="nav-link"> 
+            <a href='#' className="nav-link"> 
                Incsription
-            </NavLink>
+            </a>
         </li> 
         <li className="nav-item">
-            <NavLink to="/login" className="btn btn-success">
+            <a href='#' className="btn btn-success">
                 Connexion !
-            </NavLink>
+            </a>
         </li>
         <li className="nav-item">
             <button onClick={handleLogout} className="btn btn-danger">

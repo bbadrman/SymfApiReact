@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import AuthAPI from '../services/authAPI';
 
 const LoginPage = props => {
@@ -8,7 +9,7 @@ const LoginPage = props => {
   });
 
   const [error, setError] = useState("");
- // Gestion des champs
+
   const handleChange = ({ currentTarget}) => {
     const {value, name} = currentTarget;
    
@@ -16,7 +17,6 @@ const LoginPage = props => {
     setCredentials({ ...credentials, [name]: value });
   };
 
-  // Gestion du submit
   const handleSubmit = async event => {
     event.preventDefault();
 

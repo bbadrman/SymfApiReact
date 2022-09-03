@@ -53,6 +53,5 @@ function isAuthenticated() {
     export default {
         authenticate,
         logout,
-        setup,
-        isAuthenticated
+        setup
     }

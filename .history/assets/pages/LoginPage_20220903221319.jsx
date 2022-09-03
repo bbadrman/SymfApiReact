@@ -24,7 +24,6 @@ const LoginPage = ({onLogin, history}) => {
       await AuthAPI.authenticate(credentials);
       setError("");
       onLogin(true);
-      history.replace("/customers");
 
     } catch (error) {
       setError("Aucun compte ne posséde cet compte ou alors les infomrations ne correspondant pas!");

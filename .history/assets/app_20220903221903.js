@@ -15,7 +15,7 @@ import './styles/app.css';
 import './bootstrap';
 import Navbar from "./components/Navbar";
 import HomePage from "./pages/HomePage";
-import { HashRouter, Route, Switch, withRouter } from "react-router-dom";
+import { HashRouter, Route, Switch, withRouter } from } from "react-router-dom";
 import CustomersPage from "./pages/CustomersPage";
 import CustomersPageWithPagination from "./pages/CustomerPageWithPagination";
 import invoicesPage from "./pages/InvoicesPage";

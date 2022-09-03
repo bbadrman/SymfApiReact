@@ -7,7 +7,6 @@ const Navbar = ({isAuthenticated, onLogout, history}) => {
   const handleLogout = () => {
      AuthAPI.logout();
      onLogout(false);
-     history.push("/login");
   }
     return (<nav className="navbar navbar-expand-lg navbar-light bg-light">
     <div className="container-fluid">

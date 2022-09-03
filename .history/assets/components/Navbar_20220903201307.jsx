@@ -1,10 +1,9 @@
 import React from 'react';
-import AuthAPI from '../services/authAPI';
 
-const Navbar = props => {
+const Navbar = (props) => {
 
   const handleLogout = () => {
-     AuthAPI.logout();
+    
   }
     return (<nav className="navbar navbar-expand-lg navbar-light bg-light">
     <div className="container-fluid">

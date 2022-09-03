@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import AuthAPI from '../services/authAPI';
 
 const LoginPage = props => {
@@ -8,30 +9,29 @@ const LoginPage = props => {
   });
 
   const [error, setError] = useState("");
- // Gestion des champs
-  const handleChange = ({ currentTarget}) => {
-    const {value, name} = currentTarget;
-   
+
+  const handleChange = event => {
+    const value = event.currentTarget.value;
+    const name = event.currentTarget.name;
 
     setCredentials({ ...credentials, [name]: value });
   };
 
-  // Gestion du submit
   const handleSubmit = async event => {
     event.preventDefault();
 
     try {
-      await AuthAPI.authenticate(credentials);
-      setError("");
+     await AuthAPI.authenticate(credentials);
+     setError("");
 
-    } catch (error) {
-      setError("Aucun compte ne posséde cet compte ou alors les infomrations ne correspondant pas!");
-    }
+    }catch (error) {
+    setError("Aucun compte ne posséde cet compte ou alors les infomrations ne correspondant pas!");
+  }
   };
 
   return (
     <>
-      <h1>Connexion à l'application </h1>
+      <h1>Connexion a l'application </h1>
 
       <form onSubmit={handleSubmit}>
         <div className="form-group">
@@ -44,7 +44,7 @@ const LoginPage = props => {
             name="username"
             id="username"
             className={"form-control" + (error && " is-invalid")} />
-          {error && <p className="invalid-feedback">{error}</p>}
+            { error && <p className="invalid-feedback">{error}</p>}
         </div>
         <div className="form-group">
           <label htmlFor="password">Mot de passe</label>

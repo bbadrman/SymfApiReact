@@ -1,5 +1,5 @@
 // Les imports importants
-import React, { useState } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
 /*  
  * Welcome to your app's main JavaScript file!
@@ -19,23 +19,23 @@ import { HashRouter, Route, Switch } from "react-router-dom";
 import CustomersPage from "./pages/CustomersPage";
 import CustomersPageWithPagination from "./pages/CustomerPageWithPagination";
 import invoicesPage from "./pages/InvoicesPage";
-import LoginPage from "./pages/LoginPage";
+import loginPage from "./pages/LoginPage";
 import AuthAPI from "./services/authAPI";
 
 
 AuthAPI.setup();
 
 const App = () => {
-    const [isAuthenticated, setIsAuthenticated] = useState(true);
-    console.log(isAuthenticated);
+    const [isAuthenticated, setIsAuthenticated] = ["isAuthenticated", "setIsAuthenticated
+}
+
+const App = () => {
     return (<HashRouter>
-        <Navbar isAuthenticated={isAuthenticated} onLogout={setIsAuthenticated} />
+        <Navbar />
         <main className="container pt-5">
             <Switch>
-                <Route path="/login" render={(props) => (
-                <LoginPage 
-                    onLogin={setIsAuthenticated} 
-                    /> )}/>                <Route path="/invoices" component={invoicesPage} />
+                <Route path="/login" component={loginPage} />
+                <Route path="/invoices" component={invoicesPage} />
                 <Route path="/customers" component={CustomersPage} />
                 <Route path="/" component={HomePage} />
             </Switch>

@@ -23,7 +23,6 @@ const LoginPage = ({onLogin}) => {
     try {
       await AuthAPI.authenticate(credentials);
       setError("");
-      onLogin(true);
 
     } catch (error) {
       setError("Aucun compte ne posséde cet compte ou alors les infomrations ne correspondant pas!");

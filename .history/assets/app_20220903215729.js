@@ -26,7 +26,7 @@ import AuthAPI from "./services/authAPI";
 AuthAPI.setup();
 
 const App = () => {
-    const [isAuthenticated, setIsAuthenticated] = useState(AuthAPI.isAuthenticated());
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
     console.log(isAuthenticated);
     return (<HashRouter>
         <Navbar isAuthenticated={isAuthenticated} onLogout={setIsAuthenticated} />

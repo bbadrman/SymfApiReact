@@ -15,13 +15,13 @@ function authenticate(credentials) {
             //Je stocke le tocken dans localstorage
             window.localStorage.setItem("authToken", token);
             // On prévient Axios qu'on a maintenanat un header par defaut sur toutes les futures requetes http
-            setAxiosToken(token);
+          setAxiosToken(token); 
 
 
         });
 }
 
-function setAxiosToken(token) {
+function setAxiosToken(token){
     axios.defaults.headers["Authorization"] = "Bearer " + token;
 }
 
@@ -30,29 +30,25 @@ function setup() {
     const token = window.localStorage.getItem("authToken");
     // 2.si le tocken est encore valide
     if (token) {
-        const { exp: expiration } = jwtDecode(token);
+        const {exp: expiration} = jwtDecode(token);
         if (expiration * 1000 > new Date().getTime()) {
-            setAxiosToken(token);
+            setAxiosToken(token); 
         }
     }
-
+   
 }
 
-function isAuthenticated() {
+function isAuthenticated(){
     const token = window.localStorage.getItem("authToken");
     if (token) {
-        const { exp: expiration } = jwtDecode(token);
+        const {exp: expiration} = jwtDecode(token);
         if (expiration * 1000 > new Date().getTime()) {
-            return true;
+            setAxiosToken(token); 
         }
-        return false;
-    }
-    return false;
 }
 
-    export default {
-        authenticate,
-        logout,
-        setup,
-        isAuthenticated
-    }
+export default {
+    authenticate,
+    logout,
+    setup
+}

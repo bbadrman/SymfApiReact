@@ -48,11 +48,10 @@ function isAuthenticated() {
         return false;
     }
     return false;
-}
+
 
     export default {
         authenticate,
         logout,
-        setup,
-        isAuthenticated
+        setup
     }

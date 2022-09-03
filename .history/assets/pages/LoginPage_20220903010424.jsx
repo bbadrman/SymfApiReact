@@ -20,16 +20,9 @@ const LoginPage = props => {
     event.preventDefault();
 
     try {
-     const token = await axios
-     .post("htpps://localhost:89/api/login_check", credentials)
-     .then(response => response.data.token);
-
-      setError(""); 
-
-      //Je stocke le tocken dans localstorage
-      window.localStorage.setItem("authToken", token);
-      // On prévient Axios qu'on a maintenanat un header par defaut sur toutes les futures requetes http
-      axios.defaults.headers["Authorization"] = "Bearer " + token;
+     await axios
+     .post("htpp://localhost:89/api/login_check", credentials)
+      .then(response => console.log(response));
 
     }catch (error) {
     setError("Aucun compte ne posséde cet compte ou alors les infomrations ne correspondant pas!");

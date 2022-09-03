@@ -21,7 +21,7 @@ const LoginPage = props => {
 
     try {
      const token = await axios
-     .post("htpps://localhost:89/api/login_check", credentials)
+     .post("htpp://localhost:8089/api/login_check", credentials)
      .then(response => response.data.token);
 
       setError(""); 

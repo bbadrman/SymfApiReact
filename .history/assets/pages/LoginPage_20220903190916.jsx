@@ -20,9 +20,8 @@ const LoginPage = props => {
     event.preventDefault();
 
     try {
-     const token = await axios
-     .post("htpps://localhost:89/api/login_check", credentials)
-     .then(response => response.data.token);
+     const token = await axios.post("htpp://localhost:89/api/login_check", credentials)
+      .then(response => response.data.token);
 
       setError(""); 
 

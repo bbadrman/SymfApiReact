@@ -6,7 +6,6 @@ const Navbar = ({isAuthenticated, onLogout}) => {
 
   const handleLogout = () => {
      AuthAPI.logout();
-     onLogout(false);
   }
     return (<nav className="navbar navbar-expand-lg navbar-light bg-light">
     <div className="container-fluid">
@@ -25,8 +24,7 @@ const Navbar = ({isAuthenticated, onLogout}) => {
           </li>
         </ul>
        <ul className="navbar-nav ml-auto">
-        {(!isAuthenticated && (<>
-          <li className="nav-item">
+       <li className="nav-item">
             <NavLink to="/register" className="nav-link"> 
                Incsription
             </NavLink>
@@ -36,15 +34,12 @@ const Navbar = ({isAuthenticated, onLogout}) => {
                 Connexion !
             </NavLink>
         </li>
-        </>
-        )) || (
-       
         <li className="nav-item">
             <button onClick={handleLogout} className="btn btn-danger">
                 Déconnexion
             </button>
         </li>
-        )}
+        
        </ul>
       </div>
     </div>

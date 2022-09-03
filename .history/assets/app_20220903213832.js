@@ -19,17 +19,16 @@ import { HashRouter, Route, Switch } from "react-router-dom";
 import CustomersPage from "./pages/CustomersPage";
 import CustomersPageWithPagination from "./pages/CustomerPageWithPagination";
 import invoicesPage from "./pages/InvoicesPage";
-import LoginPage from "./pages/LoginPage";
+import loginPage from "./pages/LoginPage";
 import AuthAPI from "./services/authAPI";
 
 
 AuthAPI.setup();
 
 const App = () => {
-    const [isAuthenticated, setIsAuthenticated] = useState(true);
-    console.log(isAuthenticated);
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
     return (<HashRouter>
-        <Navbar isAuthenticated={isAuthenticated} onLogout={setIsAuthenticated} />
+        <Navbar isAuthenticated={isAuthenticated} onLogout={this.logout} />
         <main className="container pt-5">
             <Switch>
                 <Route path="/login" render={(props) => (

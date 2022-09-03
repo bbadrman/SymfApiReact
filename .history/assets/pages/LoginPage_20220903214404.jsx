@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import AuthAPI from '../services/authAPI';
 
-const LoginPage = ({onLogin}) => {
+const LoginPage = {onLogin} => {
   const [credentials, setCredentials] = useState({
     usename: "",
     password: ""
@@ -23,7 +23,6 @@ const LoginPage = ({onLogin}) => {
     try {
       await AuthAPI.authenticate(credentials);
       setError("");
-      onLogin(true);
 
     } catch (error) {
       setError("Aucun compte ne posséde cet compte ou alors les infomrations ne correspondant pas!");

@@ -15,13 +15,13 @@ function authenticate(credentials) {
             //Je stocke le tocken dans localstorage
             window.localStorage.setItem("authToken", token);
             // On prévient Axios qu'on a maintenanat un header par defaut sur toutes les futures requetes http
-          setAxiosToken(token); 
+          setAxioxToken(token); 
 
 
         });
 }
 
-function setAxiosToken(token){
+function setAxioxToken(tocken){
     axios.defaults.headers["Authorization"] = "Bearer " + token;
 }
 
@@ -31,11 +31,11 @@ function setup() {
     // 2.si le tocken est encore valide
     if (token) {
         const {exp: expiration} = jwtDecode(token);
-        if (expiration * 1000 > new Date().getTime()) {
-            setAxiosToken(token); 
+        if (expiration * 1000 > new Date()) {
+            setAxioxToken(token); 
         }
     }
-   
+    // 3. donner le tocken a axios 
 }
 
 export default {

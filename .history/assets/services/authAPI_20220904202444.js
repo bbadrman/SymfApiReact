@@ -33,9 +33,7 @@ function authenticate(credentials) {
 function setAxiosToken(token) {
     axios.defaults.headers["Authorization"] = "Bearer " + token;
 }
-/**
- * Mise en place lors du chargement de l'application
- */
+
 function setup() {
     // 1.voire si on a un tocken?
     const token = window.localStorage.getItem("authToken");
@@ -48,11 +46,7 @@ function setup() {
     }
 
 }
-/**
- * 
- * Permet de savoir si on est authentifie ou pas 
- * @return boolean 
- */
+
 function isAuthenticated() {
     const token = window.localStorage.getItem("authToken");
     if (token) {

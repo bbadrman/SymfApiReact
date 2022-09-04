@@ -48,11 +48,7 @@ function setup() {
     }
 
 }
-/**
- * 
- * Permet de savoir si on est authentifie ou pas 
- * @return boolean 
- */
+
 function isAuthenticated() {
     const token = window.localStorage.getItem("authToken");
     if (token) {

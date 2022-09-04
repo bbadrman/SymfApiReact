@@ -55,7 +55,7 @@ const CustomerPage = props => {
 
         try {
             if(editing){
-                const response = await axios.put("http://localhost:89/api/customers/" + id, customer);
+                const response = await axios.put("http://localhost:89/api/customers/" + id, customers);
                 console.log(response.data);
             }else{
                 const response = await axios.post("http://localhost:89/api/customers", customer);

@@ -66,9 +66,9 @@ const CustomersPage = props => {
 
     return (
         <>
-        <div className="mb-2 d-flex justify-content-between align-items-center">
+        <div className="d-flex justify-content-between align-items-centre">
         <h1>Liste des clients</h1>
-        <Link to="/customer/new" className='btn btn-primary'>Créer un client</Link>
+        <Link to="/customer/new">Créer un client</Link>
         </div>
             
             <div className="form-group">

@@ -6,7 +6,6 @@ import './bootstrap';
 import Navbar from "./components/Navbar";
 import PrivateRoute from "./components/PrivateRoute";
 import AuthContext from "./contexts/AuthContext";
-import CustomerPage from "./pages/CustomerPage";
 import CustomersPage from "./pages/CustomersPage";
 import HomePage from "./pages/HomePage";
 import invoicesPage from "./pages/InvoicesPage";
@@ -36,7 +35,7 @@ const App = () => {
                     <Switch>
                         <Route path="/login" component={LoginPage} />
                         <PrivateRoute path="/invoices" component={invoicesPage} />
-                        <PrivateRoute path="/customers/:id" component={CustomerPage} />
+                        <PrivateRoute path="/customers/:id" component={CustomersPage} />
                         <PrivateRoute path="/customers" component={CustomersPage} />
                         <Route path="/" component={HomePage} />
                     </Switch>

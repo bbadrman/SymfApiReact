@@ -56,8 +56,7 @@ const CustomerPage = props => {
         try {
             if(editing){
                 const response = await axios.put("http://localhost:89/api/customers/" + id, customer);
-               
-                // TODO: Flash notification de succés
+                console.log(response.data);
             }else{
                 const response = await axios.post("http://localhost:89/api/customers", customer);
                 // TODO: Flash notification de succés
@@ -72,8 +71,6 @@ const CustomerPage = props => {
                 });
 
                 setErrors(apiErrors);
-
-                // TODO: Flash notification d'erreurs
             }
         }
     };

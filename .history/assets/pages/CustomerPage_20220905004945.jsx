@@ -72,8 +72,6 @@ const CustomerPage = props => {
                 });
 
                 setErrors(apiErrors);
-
-                // TODO: Flash notification d'erreurs
             }
         }
     };

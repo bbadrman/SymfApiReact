@@ -25,23 +25,18 @@ const CustomerPage = props => {
 
     const [editing, setEditing] = useState(false);
 
-    const fetchCustomer = async id => {
-
-        try {
-            const data = await axios
-            .get("http://localhost:89/api/customers/" + id)
-            .then(response => response.data);
-            const {firstName, lastName, email, company} = data;
-            setCustomer({firstName, lastName, email, company});
-        }catch(error){
-            console.log(error.response);
-        }
-       
-    }
+    const fetchCustomer = async id => await axios
+        .get("http://localhost:89/api/customers/" + id)
+        .then(response => response.data);
     useEffect(() => {
         if (id != "new") {
             setEditing(true);
-            fetchCustomer(id);
+            try {
+              const data = fetchCustomer(id);
+              console.log(data);
+            } catch (error) {
+                console.log(error.response);
+            }
         }
     }, [id]);
 
@@ -54,14 +49,8 @@ const CustomerPage = props => {
         event.preventDefault();
 
         try {
-            if(editing){
-                const response = await axios.put("http://localhost:89/api/customers/" + id, customer);
-                console.log(response.data);
-            }else{
-                const response = await axios.post("http://localhost:89/api/customers", customer);
-           
-            }
-             setErrors({});
+            const response = await axios.post("http://localhost:89/api/customers", customer);
+            setErrors({});
         } catch (error) {
             if (error.response.data.violations) {
                 const apiErrors = {};

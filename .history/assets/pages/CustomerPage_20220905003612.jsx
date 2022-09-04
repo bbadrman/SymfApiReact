@@ -54,14 +54,8 @@ const CustomerPage = props => {
         event.preventDefault();
 
         try {
-            if(editing){
-                const response = await axios.put("http://localhost:89/api/customers/" + id, customer);
-                console.log(response.data);
-            }else{
-                const response = await axios.post("http://localhost:89/api/customers", customer);
-           
-            }
-             setErrors({});
+            const response = await axios.post("http://localhost:89/api/customers", customer);
+            setErrors({});
         } catch (error) {
             if (error.response.data.violations) {
                 const apiErrors = {};

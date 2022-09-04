@@ -1,6 +1,17 @@
 // Les imports importants
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
+/*  
+ * Welcome to your app's main JavaScript file!
+ *
+ * We recommend including the built version of this JavaScript file
+ * (and its CSS file) in your base layout (base.html.twig).
+ */
+
+// any CSS you import will output into a single css file (app.css in this case)
+import './styles/app.css';
+
+// start the Stimulus application
 import { HashRouter, Route, Switch, withRouter } from "react-router-dom";
 import './bootstrap';
 import Navbar from "./components/Navbar";
@@ -11,8 +22,6 @@ import HomePage from "./pages/HomePage";
 import invoicesPage from "./pages/InvoicesPage";
 import LoginPage from "./pages/LoginPage";
 import AuthAPI from "./services/authAPI";
-
-import './styles/app.css';
 
 
 AuthAPI.setup();

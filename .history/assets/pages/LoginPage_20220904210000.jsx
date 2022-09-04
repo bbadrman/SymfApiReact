@@ -48,15 +48,15 @@ const LoginPage = ({ history}) => {
        placeholder="Adresse email de connexion" 
        error={error} />
 
-       <Field 
-       label="Mot de passe" 
-       name="password" 
-       value={credentials.password}
-       onChange={handleChange} 
-       type="password" 
-       error="" />
-
-      
+        <div className="form-group">  
+          <label htmlFor="password">Mot de passe</label>
+          <input value={credentials.password}
+            onChange={handleChange}
+            type="password"
+            placeholder="Mot de passe"
+            name="password" id="password"
+            className="form-control" />
+        </div>
         <div className="form-group"><button type="submit" className="btn btn-success">je me connecte</button></div>
       </form>
     </>

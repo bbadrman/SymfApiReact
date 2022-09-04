@@ -1,22 +1,40 @@
 // Les imports importants
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import ReactDOM from "react-dom";
-import { HashRouter, Route, Switch, withRouter } from "react-router-dom";
+/*  
+ * Welcome to your app's main JavaScript file!
+ *
+ * We recommend including the built version of this JavaScript file
+ * (and its CSS file) in your base layout (base.html.twig).
+ */
+
+// any CSS you import will output into a single css file (app.css in this case)
+import './styles/app.css';
+
+// start the Stimulus application
 import './bootstrap';
 import Navbar from "./components/Navbar";
-import PrivateRoute from "./components/PrivateRoute";
-import AuthContext from "./contexts/AuthContext";
-import CustomersPage from "./pages/CustomersPage";
 import HomePage from "./pages/HomePage";
+import { HashRouter, Route, Switch, withRouter, Redirect } from "react-router-dom";
+import CustomersPage from "./pages/CustomersPage";
+import CustomersPageWithPagination from "./pages/CustomerPageWithPagination";
 import invoicesPage from "./pages/InvoicesPage";
 import LoginPage from "./pages/LoginPage";
 import AuthAPI from "./services/authAPI";
-
-import './styles/app.css';
+import AuthContext from "./contexts/AuthContext";
 
 
 AuthAPI.setup();
 
+const PrivateRoute = ({ path, component }) => {
+    const { isAuthenticated } = useContext(AuthContext);
+   
+    return isAuthenticated ? (
+    <Route path={path} component={component} />
+    ) : (
+    <Redirect to="/login" />
+    );
+};
 
 const App = () => {
     const [isAuthenticated, setIsAuthenticated] = useState(AuthAPI.isAuthenticated());

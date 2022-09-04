@@ -26,40 +26,37 @@ import AuthContext from "./contexts/AuthContext";
 
 AuthAPI.setup();
 
-const PrivateRoute = ({ path, component }) => {
-    const { isAuthenticated } = useContext(AuthContext);
-   
-    return isAuthenticated ? (
-    <Route path={path} component={component} />
-    ) : (
-    <Redirect to="/login" />
-    );
-};
+const PrivateRoute = ({path, component}) => {
+  const {isAuthenticated} = useContext(AuthContext);
+   return isAuthenticated ? (<Route path={path} component={component} />) : (<Redirect to="/login" />);
 
+}
+    
 const App = () => {
     const [isAuthenticated, setIsAuthenticated] = useState(AuthAPI.isAuthenticated());
 
     const NavbarWithRouter = withRouter(Navbar);
 
-    const contextValue = {
+    const contextValue ={
         isAuthenticated,
         setIsAuthenticated
-    };
+    }
 
     return (
-        <AuthContext.Provider value={contextValue}>
-            <HashRouter>
-                <NavbarWithRouter />
-                <main className="container pt-5">
-                    <Switch>
-                        <Route path="/login" component={LoginPage} />
-                        <PrivateRoute path="/invoices" component={invoicesPage} />
-                        <PrivateRoute path="/customers" component={CustomersPage} />
-                        <Route path="/" component={HomePage} />
-                    </Switch>
-                </main>
-            </HashRouter>
-        </AuthContext.Provider>
+    <AuthContext.Provider value={contextValue}>
+     <HashRouter>
+        <NavbarWithRouter />
+        <main className="container pt-5">
+            <Switch>
+                <Route path="/login" component={LoginPage} />               
+                <PrivateRoute path="/invoices"  component={invoicesPage} />
+                <PrivateRoute path="/customers" component={CustomersPage} />
+                
+                <Route path="/" component={HomePage} />
+            </Switch>
+        </main>
+    </HashRouter>
+    </AuthContext.Provider>
     );
 };
 

@@ -30,11 +30,12 @@ const CustomerPage = props => {
         try {
             const response = await axios.post("http://localhost:89/api/customers", customer);
             setErrors({});
+            console.log(response.data);
         } catch (error) {
             if (error.response.data.violations) {   
                 const apiErrors = {};
                 error.response.data.violations.forEach(violation => {
-                    apiErrors[violation.propertyPath] = violation.message;
+                    apiErrors[violation.proprtyPath] = violation.message;
                 });
             
             setErrors(apiErrors);

@@ -30,11 +30,12 @@ const CustomerPage = props => {
         try {
             const response = await axios.post("http://localhost:89/api/customers", customer);
             setErrors({});
+            console.log(response.data);
         } catch (error) {
             if (error.response.data.violations) {   
                 const apiErrors = {};
                 error.response.data.violations.forEach(violation => {
-                    apiErrors[violation.propertyPath] = violation.message;
+                    apiErrors[violation.proprtyPath] = violation.message;
                 });
             
             setErrors(apiErrors);
@@ -46,7 +47,7 @@ return (
     <>
         <h1>Création d'un client</h1>
         <form onSubmit={handleSubmit}>
-            <Field name="lastName" label="Nom de famille" placeholder="Nom de famille du client" value={customer.lastName} onChange={handleChange} error={errors.lastName} />
+            <Field name="lastName" label="Nom de famille" placeholder="Nom de famille du client" value={customer.lastName} onChange={handleChange} error={error.lastName} />
             <Field name="firstName" label="Prénom" placeholder="Prénom du client" value={customer.firstName} onChange={handleChange} error={errors.firstName} />
             <Field name="email" label="Email" placeholder="Adress email du client" type="email" value={customer.email} onChange={handleChange} error={errors.email} />
             <Field name="company" label="Entreprise" placeholder="Entreprise du client" value={customer.company} onChange={handleChange} error={errors.company} />

@@ -34,7 +34,7 @@ const CustomerPage = props => {
             if (error.response.data.violations) {   
                 const apiErrors = {};
                 error.response.data.violations.forEach(violation => {
-                    apiErrors[violation.propertyPath] = violation.message;
+                    apiErrors[violation.proprtyPath] = violation.message;
                 });
             
             setErrors(apiErrors);

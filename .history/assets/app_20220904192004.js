@@ -1,5 +1,5 @@
 // Les imports importants
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, AuthContext } from "react";
 import ReactDOM from "react-dom";
 /*  
  * Welcome to your app's main JavaScript file!
@@ -28,13 +28,12 @@ AuthAPI.setup();
 
 const PrivateRoute = ({ path, component }) => {
     const { isAuthenticated } = useContext(AuthContext);
-   
     return isAuthenticated ? (
     <Route path={path} component={component} />
     ) : (
     <Redirect to="/login" />
     );
-};
+}
 
 const App = () => {
     const [isAuthenticated, setIsAuthenticated] = useState(AuthAPI.isAuthenticated());
@@ -44,7 +43,7 @@ const App = () => {
     const contextValue = {
         isAuthenticated,
         setIsAuthenticated
-    };
+    }
 
     return (
         <AuthContext.Provider value={contextValue}>
@@ -55,6 +54,7 @@ const App = () => {
                         <Route path="/login" component={LoginPage} />
                         <PrivateRoute path="/invoices" component={invoicesPage} />
                         <PrivateRoute path="/customers" component={CustomersPage} />
+
                         <Route path="/" component={HomePage} />
                     </Switch>
                 </main>

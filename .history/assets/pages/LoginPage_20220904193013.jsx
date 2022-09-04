@@ -26,7 +26,7 @@ const LoginPage = ({ history}) => {
     try {
       await AuthAPI.authenticate(credentials);
       setError("");
-      setIsAuthenticated(true);
+      onLogin(true);
       history.replace("/customers");
 
     } catch (error) {

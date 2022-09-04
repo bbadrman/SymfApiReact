@@ -40,7 +40,7 @@ const App = () => {
                     <LoginPage
                         onLogin={setIsAuthenticated} {...props}
                     />)} />               
-                <PrivateRoute path="/invoices" isAuthenticated={ isAuthenticated } component={invoicesPage} />
+                <Route path="/invoices" component={invoicesPage} />
                 <PrivateRoute path="/customers" isAuthenticated={ isAuthenticated } component={CustomersPage} />
                 
                 <Route path="/" component={HomePage} />

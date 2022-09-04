@@ -40,9 +40,16 @@ const App = () => {
                     <LoginPage
                         onLogin={setIsAuthenticated} {...props}
                     />)} />               
-                <PrivateRoute path="/invoices" isAuthenticated={ isAuthenticated } component={invoicesPage} />
+                <Route path="/invoices" component={invoicesPage} />
                 <PrivateRoute path="/customers" isAuthenticated={ isAuthenticated } component={CustomersPage} />
-                
+                <Route path="/customers" render={props => 
+                   isAuthenticated ? (
+                        <CustomersPage {...props} />
+                    ) : (
+                        <Redirect to="/login" />
+                    )
+                }
+                />
                 <Route path="/" component={HomePage} />
             </Switch>
         </main>

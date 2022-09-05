@@ -1,6 +1,5 @@
 import moment from "moment";
 import React, { useEffect, useState } from 'react';
-import { Link } from "react-router-dom";
 import Pagination from '../components/Pagination';
 import InvoicesAPI from '../services/invoicesAPI';
 
@@ -84,8 +83,7 @@ const InvoicesPage = props => {
 
             <div className="mb-2 d-flex justify-content-between align-items-center">
             <h1>Liste des Factures</h1>
-            <Link to="/invoices/new" className='btn btn-primary'>Créer une facture</Link>
-
+            
             </div>
             
             <div className="form-group">

@@ -84,7 +84,7 @@ const InvoicesPage = props => {
 
             <div className="mb-2 d-flex justify-content-between align-items-center">
             <h1>Liste des Factures</h1>
-            <Link to="/invoices/new" className='btn btn-primary'>Créer une facture</Link>
+            <Link to="/invoices/new" className='btn btn-primary'>Créer un client</Link>
 
             </div>
             

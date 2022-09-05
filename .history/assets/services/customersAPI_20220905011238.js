@@ -21,13 +21,12 @@ function update(id, customer) {
               
 }
 function create(customer) {
-    return axios.post("http://localhost:89/api/customers", customer);
+    return axios.post("http://localhost:89/api/customers"
 }
 
 export default {
     findAll,
     find,
-    create,
     update,
     delete: deleteCustomer
 

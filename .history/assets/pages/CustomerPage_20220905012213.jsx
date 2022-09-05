@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Field from '../components/forms/Field';
+import axios from 'axios';
 import customersAPI from '../services/customersAPI';
 
 const CustomerPage = ({match, history}) => {
@@ -52,7 +53,6 @@ const CustomerPage = ({match, history}) => {
         setCustomer({ ...customer, [name]: value });
     };
 
-    // Gestion de la soumission du formmulaire
     const handleSubmit = async event => {
         event.preventDefault();
 

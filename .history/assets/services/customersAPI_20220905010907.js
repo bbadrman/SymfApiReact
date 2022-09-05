@@ -16,19 +16,11 @@ function deleteCustomer(id) {
         .delete("http://localhost:89/api/customers/" + id)
 }
 
-function update(id, customer) {
-    return axios.put("http://localhost:89/api/customers/" + id, customer);
-              
-}
-function create(customer) {
-    return axios.post("http://localhost:89/api/customers", customer);
-}
+function update(id, )
 
 export default {
     findAll,
     find,
-    create,
-    update,
     delete: deleteCustomer
 
 };

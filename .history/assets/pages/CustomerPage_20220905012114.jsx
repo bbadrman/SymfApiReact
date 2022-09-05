@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Field from '../components/forms/Field';
+import axios from 'axios';
 import customersAPI from '../services/customersAPI';
 
 const CustomerPage = ({match, history}) => {
@@ -38,7 +39,7 @@ const CustomerPage = ({match, history}) => {
        
     };
      
-    // Chargement du customer si besoin au chargement du composent ou au chargement de l'identifiant
+    // Chargement du customer si besoin au chargement du composent ou au chargement de l'identifi
     useEffect(() => {
         if (id != "new") {
             setEditing(true);
@@ -46,13 +47,11 @@ const CustomerPage = ({match, history}) => {
         }
     }, [id]);
 
-    // Gestion du changements des inputs dans le formulaire
     const handleChange = ({ currentTarget }) => {
         const { name, value } = currentTarget;
         setCustomer({ ...customer, [name]: value });
     };
 
-    // Gestion de la soumission du formmulaire
     const handleSubmit = async event => {
         event.preventDefault();
 

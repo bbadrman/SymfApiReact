@@ -27,7 +27,6 @@ function create(customer) {
 export default {
     findAll,
     find,
-    create,
     update,
     delete: deleteCustomer
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Field from '../components/forms/Field';
-import customersAPI from '../services/customersAPI';
+import axios from 'axios';
 
 const CustomerPage = ({match, history}) => {
 
@@ -23,22 +23,19 @@ const CustomerPage = ({match, history}) => {
 
     const [editing, setEditing] = useState(false);
 
-    // Récuperation du customer en fonction de l'identification 
     const fetchCustomer = async id => {
 
         try {
-            const {firstName, lastName, email, company} =  await customersAPI.find(id);
-           
+            const data = await axios
+            .get("http://localhost:89/api/customers/" + id)
+            .then(response => response.data);
+            const {firstName, lastName, email, company} = data;
             setCustomer({firstName, lastName, email, company});
         }catch(error){
-            
-            // TODO: Flash notification d'une error
-            history.replace("/customers");
+            console.log(error.response);
         }
        
-    };
-     
-    // Chargement du customer si besoin au chargement du composent ou au chargement de l'identifiant
+    }
     useEffect(() => {
         if (id != "new") {
             setEditing(true);
@@ -46,33 +43,30 @@ const CustomerPage = ({match, history}) => {
         }
     }, [id]);
 
-    // Gestion du changements des inputs dans le formulaire
     const handleChange = ({ currentTarget }) => {
         const { name, value } = currentTarget;
         setCustomer({ ...customer, [name]: value });
     };
 
-    // Gestion de la soumission du formmulaire
     const handleSubmit = async event => {
         event.preventDefault();
 
         try {
             if(editing){
-                await customersAPI.update(id, customer);
+                const response = await axios.put("http://localhost:89/api/customers/" + id, customer);
                
                 // TODO: Flash notification de succés
             }else{
-                await customersAPI.create(customer);
+                const response = await axios.post("http://localhost:89/api/customers", customer);
                 // TODO: Flash notification de succés
                 history.replace("/customers");
             }
              setErrors({});
-        } catch (response) {
-            const {violations} = response.data;
-            if (violations) {
+        } catch (error) {
+            if (error.response.data.violations) {
                 const apiErrors = {};
-                violations.forEach(({propertyPath, message}) => {
-                    apiErrors[propertyPath] = message;
+                error.response.data.violations.forEach(violation => {
+                    apiErrors[violation.propertyPath] = violation.message;
                 });
 
                 setErrors(apiErrors);

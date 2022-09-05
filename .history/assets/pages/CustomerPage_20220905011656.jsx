@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Field from '../components/forms/Field';
+import axios from 'axios';
 import customersAPI from '../services/customersAPI';
 
 const CustomerPage = ({match, history}) => {
@@ -23,7 +24,6 @@ const CustomerPage = ({match, history}) => {
 
     const [editing, setEditing] = useState(false);
 
-    // Récuperation du customer en fonction de l'identification 
     const fetchCustomer = async id => {
 
         try {
@@ -31,14 +31,12 @@ const CustomerPage = ({match, history}) => {
            
             setCustomer({firstName, lastName, email, company});
         }catch(error){
-            
+            console.log(error.response);
             // TODO: Flash notification d'une error
             history.replace("/customers");
         }
        
-    };
-     
-    // Chargement du customer si besoin au chargement du composent ou au chargement de l'identifiant
+    }
     useEffect(() => {
         if (id != "new") {
             setEditing(true);
@@ -46,13 +44,11 @@ const CustomerPage = ({match, history}) => {
         }
     }, [id]);
 
-    // Gestion du changements des inputs dans le formulaire
     const handleChange = ({ currentTarget }) => {
         const { name, value } = currentTarget;
         setCustomer({ ...customer, [name]: value });
     };
 
-    // Gestion de la soumission du formmulaire
     const handleSubmit = async event => {
         event.preventDefault();
 
@@ -71,8 +67,8 @@ const CustomerPage = ({match, history}) => {
             const {violations} = response.data;
             if (violations) {
                 const apiErrors = {};
-                violations.forEach(({propertyPath, message}) => {
-                    apiErrors[propertyPath] = message;
+                violations.forEach(violation => {
+                    apiErrors[violation.propertyPath] = violation.message;
                 });
 
                 setErrors(apiErrors);

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Field from '../components/forms/Field';
 import Select from '../components/forms/Select';
-import CustomersAPI from '../services/customersAPI';
+import CustomersAPI from './services/customersAPI';
 
 const InvoicePage = props => {
     const [invoice, setInvoice] = useState({

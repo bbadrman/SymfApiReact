@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Field from '../components/forms/Field';
 import Select from '../components/forms/Select';
-import CustomersAPI from '../services/customersAPI';
+import CustomersAPI from './services/customersAPI';
 
 const InvoicePage = props => {
     const [invoice, setInvoice] = useState({
@@ -43,12 +43,11 @@ const InvoicePage = props => {
 
                 <Field name="amount" type='number' placeholder="Montant de la facture" label="Montant" onChange={handleChange} value={invoice.amount} error={errors.amount} />
 
-                <Select name="customer" label="Client" value={invoice.customer} onChange={handleChange} error={errors.customer} >
+                <Select name="customer" label="client" value={invoice.customer} onChange={handleChange} error={errors.customer} >
                     {customers.map(customer => (
                         <option key={customer.id} value={customer.id}>
-                            {customer.firstName} {customer.lastName}
-                        </option>
-                        ))}
+                            {customer.firstName}{customer.lastName}
+                        </option>))}
                 </Select>
 
                 <Select name="status" label="Statut" value={invoice.status} error={errors.status} onChange={handleChange} >

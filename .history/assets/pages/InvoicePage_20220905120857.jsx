@@ -5,11 +5,11 @@ import Select from '../components/forms/Select';
 import CustomersAPI from '../services/customersAPI';
 import axios from 'axios';
 
-const InvoicePage = ({ history }) => {
+const InvoicePage = ({history}) => {
     const [invoice, setInvoice] = useState({
         amount: "",
         customer: "",
-        status: "SENT",
+        status: "",
     });
 
     const [customers, setCustomers] = useState([]);
@@ -23,7 +23,6 @@ const InvoicePage = ({ history }) => {
         try {
             const data = await CustomersAPI.findAll();
             setCustomers(data);
-            if (!invoice.customer) setInvoice({ ...invoice, customer: data[0].id });
         } catch (error) {
             console.log(error.reponse);
         }
@@ -34,46 +33,26 @@ const InvoicePage = ({ history }) => {
     }, [])
 
     // Gestion du changements des inputs dans le formulaire
-    const handleChange = (event) => {
-        setInvoice({ ...invoice,sentAt: new Date(), chron:Math.floor(Math.random() * 100)
-            ,  [event.target.name]: event.target.value });
+    const handleChange = ({ currentTarget }) => {
+        const { name, value } = currentTarget;
+        setInvoice({ ...invoice, [name]: value });
     };
 
-    const handleSubmit = async event => {
+    const handleSubmit = async event =>{
         event.preventDefault();
-      await axios.post("http://localhost:89/api/invoices",
-        {
-            ...invoice, customer: `/api/customers/${invoice.customer}`
-        }
-        ).then(function (response) {
-            history.push("/invoices");
-          })
-          .catch(function (error) {
-            console.log(error);
-          });;
-        // try {
-        //     const response = await axios.post("http://localhost:89/api/invoices",
-        //         // {
-        //         //     ...invoice, customer: `/api/customers/${invoice.customer}`
-        //         // });
-        //         {
-        //             "amount": "500",
-        //             "status": "SENT",
-        //             "sentAt": "2022-07-01",
-        //             "chron": 522,
-        //             "customer": "/api/customers/1"
-        //         });
-        //         console.log("test", response)
-        //     // todo: Flash notification
-        //     history.push("/invoices");
-        // } catch (error) {
-        //     console.log(error.response);
-        // }
+         try{
+            const response = await axios.post("http://localhost:89/api/invoices", {...invoice, customer:`/api/customers/${invoice.customer}`});
+           
+            // todo: Flash notification
+            history.replace("/invoices")
+         }catch(error){
+            console.log(error.response);
+         }
+       
     };
-
     return (
         <>
-            <h1>Création d'une facture</h1>
+            <h1>Creation d'une facture</h1>
             <form onSubmit={handleSubmit}>
 
                 <Field name="amount" type='number' placeholder="Montant de la facture" label="Montant" onChange={handleChange} value={invoice.amount} error={errors.amount} />
@@ -83,7 +62,7 @@ const InvoicePage = ({ history }) => {
                         <option key={customer.id} value={customer.id}>
                             {customer.firstName} {customer.lastName}
                         </option>
-                    ))}
+                        ))}
                 </Select>
 
                 <Select name="status" label="Statut" value={invoice.status} error={errors.status} onChange={handleChange} >

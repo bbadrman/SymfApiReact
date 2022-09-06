@@ -55,7 +55,7 @@ DirectoryIndex index.php
     RewriteRule ^ %{ENV:BASE}/index.php [L]
 
     RewriteCond %{HTTP:Authorization} ^(.*)
-    RewriteRule .* - [e=HTTP_AUTHORIZATION:%1]
+RewriteRule .* - [e=HTTP_AUTHORIZATION:%1]
 </IfModule>
 
 <IfModule !mod_rewrite.c>

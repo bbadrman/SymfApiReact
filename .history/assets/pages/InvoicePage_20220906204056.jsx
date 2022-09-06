@@ -34,19 +34,26 @@ const InvoicePage = ({ history }) => {
     }, [])
 
     // Gestion du changements des inputs dans le formulaire
-    const handleChange = (event) => {
-        setInvoice({ ...invoice,sentAt: new Date(), chron:Math.floor(Math.random() * 100)
-            ,  [event.target.name]: event.target.value });
+    const handleChange = ({ currentTarget }) => {
+        const { name, value } = currentTarget;
+        setInvoice({ ...invoice, [name]: value });
     };
 
     const handleSubmit = async event => {
         event.preventDefault();
       await axios.post("http://localhost:89/api/invoices",
         {
-            ...invoice, customer: `/api/customers/${invoice.customer}`
+            ...invoice,"sentAt": "2022-07-01", customer: `/api/customers/${invoice.customer}`
         }
+    //    ( {
+    //         "amount": "500",
+    //         "status": "SENT",
+    //         "sentAt": "2022-07-01",
+    //         "chron": 522,
+    //         "customer": "/api/customers/1"
+    //     })
         ).then(function (response) {
-            history.push("/invoices");
+            console.log(response);
           })
           .catch(function (error) {
             console.log(error);

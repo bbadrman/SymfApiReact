@@ -66,7 +66,7 @@ const InvoicePage = ({ history, match }) => {
 
         try {
             if (editing) {
-                const response = await axios.put("http://localhost:89/api/invoices/" + id,
+                const response = await axios.put("http://localhost:89/api/invoices" + id,
                     {
                         ...invoice, customer: `/api/customers/${invoice.customer}`
                     });

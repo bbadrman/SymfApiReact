@@ -66,10 +66,10 @@ const InvoicePage = ({ history, match }) => {
 
         try {
             if (editing) {
-                const response = await axios.put("http://localhost:89/api/invoices/" + id,
+                const response = await axios.post("http://localhost:89/api/invoices" + id,
                     {
                         ...invoice, customer: `/api/customers/${invoice.customer}`
-                    });
+                    })
                 //Flash notification success
                 console.log(response);
             } else {
@@ -91,38 +91,53 @@ const InvoicePage = ({ history, match }) => {
                     apiErrors[propertyPath] = message;
 
                 });
-                setErrors(apiErrors);
-            }
-        }
-    };
+                // try {
+                //     const response = await axios.post("http://localhost:89/api/invoices",
+                //         // {
+                //         //     ...invoice, customer: `/api/customers/${invoice.customer}`
+                //         // });
+                //         {
+                //             "amount": "500",
+                //             "status": "SENT",
+                //             "sentAt": "2022-07-01",
+                //             "chron": 522,
+                //             "customer": "/api/customers/1"
+                //         });
+                //         console.log("test", response)
+                //     // todo: Flash notification
+                //     history.push("/invoices");
+                // } catch (error) {
+                //     console.log(error.response);
+                // }
+            };
 
-    return (
-        <>
-            {(editing && <h1>Modification d'une facture</h1>) || (<h1>Création d'une facture</h1>)}
-            <form onSubmit={handleSubmit}>
+            return (
+                <>
+                    {(editing && <h1>Modification d'une facture</h1>) || (<h1>Création d'une facture</h1>)}
+                    <form onSubmit={handleSubmit}>
 
-                <Field name="amount" type='number' placeholder="Montant de la facture" label="Montant" onChange={handleChange} value={invoice.amount} error={errors.amount} />
+                        <Field name="amount" type='number' placeholder="Montant de la facture" label="Montant" onChange={handleChange} value={invoice.amount} error={errors.amount} />
 
-                <Select name="customer" label="Client" value={invoice.customer} onChange={handleChange} error={errors.customer} >
-                    {customers.map(customer => (
-                        <option key={customer.id} value={customer.id}>
-                            {customer.firstName} {customer.lastName}
-                        </option>
-                    ))}
-                </Select>
+                        <Select name="customer" label="Client" value={invoice.customer} onChange={handleChange} error={errors.customer} >
+                            {customers.map(customer => (
+                                <option key={customer.id} value={customer.id}>
+                                    {customer.firstName} {customer.lastName}
+                                </option>
+                            ))}
+                        </Select>
 
-                <Select name="status" label="Statut" value={invoice.status} error={errors.status} onChange={handleChange} >
-                    <option value="SENT">Enoyée</option>
-                    <option value="PAID">Payée</option>
-                    <option value="CANCELLED">Annulée</option>
+                        <Select name="status" label="Statut" value={invoice.status} error={errors.status} onChange={handleChange} >
+                            <option value="SENT">Enoyée</option>
+                            <option value="PAID">Payée</option>
+                            <option value="CANCELLED">Annulée</option>
 
-                </Select>
-                <div className="form-group"><button type="submit" className="btn btn-success">Enregistrer</button>
-                    <Link to="/invoices" className="btn btn-link">Retour aux factures</Link>
-                </div>
-            </form>
-        </>
-    );
-};
+                        </Select>
+                        <div className="form-group"><button type="submit" className="btn btn-success">Enregistrer</button>
+                            <Link to="/invoices" className="btn btn-link">Retour aux factures</Link>
+                        </div>
+                    </form>
+                </>
+            );
+        };
 
-export default InvoicePage;
+        export default InvoicePage;

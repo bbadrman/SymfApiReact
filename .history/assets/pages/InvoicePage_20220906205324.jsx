@@ -34,9 +34,10 @@ const InvoicePage = ({ history }) => {
     }, [])
 
     // Gestion du changements des inputs dans le formulaire
-    const handleChange = (event) => {
-        setInvoice({ ...invoice,sentAt: new Date(), chron:Math.floor(Math.random() * 100)
-            ,  [event.target.name]: event.target.value });
+    const handleChange = ({ currentTarget }) => {
+        const { name, value } = currentTarget;
+        console.log("whats hapened", currentTarget);
+        setInvoice({ ...invoice,sentAt: new Date(), chron:2,  [name]: value });
     };
 
     const handleSubmit = async event => {
@@ -45,8 +46,15 @@ const InvoicePage = ({ history }) => {
         {
             ...invoice, customer: `/api/customers/${invoice.customer}`
         }
+    //    ( {
+    //         "amount": "500",
+    //         "status": "SENT",
+    //         "sentAt": "2022-07-01",
+    //         "chron": 522,
+    //         "customer": "/api/customers/1"
+    //     })
         ).then(function (response) {
-            history.push("/invoices");
+            console.log(response);
           })
           .catch(function (error) {
             console.log(error);

@@ -70,7 +70,7 @@ class Invoice
      * @ORM\Column(type="string", length=255)
      * @Groups({"invoices_read", "customers_read", "invoices_subresource"})
      * @Assert\NotBlank(message="Le status est obligatoire")
-     * @Assert\Choice(choices={"SENT", "PIAD", "CANCELLED" }, message="Le status doit étre SENT, PIAD, CANCELLED")
+     * @Assert\Choice(choices={"SENT", "PAID", "CANCELLED" }, message="Le status doit étre SENT, PAID, CANCELLED")
      */
     private $status;
 

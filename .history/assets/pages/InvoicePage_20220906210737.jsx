@@ -35,8 +35,7 @@ const InvoicePage = ({ history }) => {
 
     // Gestion du changements des inputs dans le formulaire
     const handleChange = (event) => {
-        setInvoice({ ...invoice,sentAt: new Date(), chron:Math.floor(Math.random() * 100)
-            ,  [event.target.name]: event.target.value });
+        setInvoice({ ...invoice,sentAt: new Date(), chron:Math.floor(),  [event.target.name]: event.target.value });
     };
 
     const handleSubmit = async event => {

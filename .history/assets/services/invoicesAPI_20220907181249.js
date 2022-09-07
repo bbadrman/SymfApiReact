@@ -35,7 +35,6 @@ function create(invoice){
 export default {
     findAll,
     find, 
-    create,
     update,
     delete: deleteInvoice
 

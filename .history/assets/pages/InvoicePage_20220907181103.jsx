@@ -22,7 +22,6 @@ const InvoicePage = ({ history, match }) => {
         status: "",
     });
 
-    //Récuperation des clients
     const fetchCustomers = async () => {
         try {
             const data = await CustomersAPI.findAll();
@@ -33,7 +32,6 @@ const InvoicePage = ({ history, match }) => {
         }
     };
 
-    // réuperation d'une facture
     const fetchInvoice = async id => {
         try {
             const { amount, status, customer } = await invoicesAPI.find(id);
@@ -44,12 +42,10 @@ const InvoicePage = ({ history, match }) => {
         }
     };
 
-    // récupération de la lisete des clients a chaque chargement du composant 
     useEffect(() => {
         fetchCustomers();
     }, []);
 
-    // recuperation de la bonne facture quand l'identifiant de l'url chnage
     useEffect(() => {
         if (id !== "new") {
             setEditing(true);
@@ -65,17 +61,20 @@ const InvoicePage = ({ history, match }) => {
         });
     };
 
-    // Gestion de la soumission du formulaire
     const handleSubmit = async event => {
         event.preventDefault();
 
         try {
             if (editing) {
-                await invoicesAPI.update(id, invoice);
+                const response = await invoicesAPI.update(id, invoice);
                 //Flash notification success
-                history.replace("/invoices");
+         
             } else {
-                 await invoicesAPI.create(invoice);
+                const response = await axios.post("http://localhost:89/api/invoices",
+                    {
+                        ...invoice, customer: `/api/customers/${invoice.customer}`
+                    }
+                );
                 //Flash notification success
                 history.replace("/invoices");
             }

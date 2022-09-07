@@ -22,7 +22,6 @@ const InvoicePage = ({ history, match }) => {
         status: "",
     });
 
-    //Récuperation des clients
     const fetchCustomers = async () => {
         try {
             const data = await CustomersAPI.findAll();
@@ -73,7 +72,7 @@ const InvoicePage = ({ history, match }) => {
             if (editing) {
                 await invoicesAPI.update(id, invoice);
                 //Flash notification success
-                history.replace("/invoices");
+         
             } else {
                  await invoicesAPI.create(invoice);
                 //Flash notification success

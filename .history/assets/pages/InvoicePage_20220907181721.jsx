@@ -73,7 +73,7 @@ const InvoicePage = ({ history, match }) => {
             if (editing) {
                 await invoicesAPI.update(id, invoice);
                 //Flash notification success
-                history.replace("/invoices");
+         
             } else {
                  await invoicesAPI.create(invoice);
                 //Flash notification success

@@ -31,7 +31,6 @@ const InvoicePage = ({ history, match }) => {
         try {
             const data = await CustomersAPI.findAll();
             setCustomers(data);
-            setLoading(false);
             if (!invoice.customer) setInvoice({ ...invoice, customer: data[0].id });
         } catch (error) {
             toast.error("Impossible de charger les clients");
@@ -44,7 +43,6 @@ const InvoicePage = ({ history, match }) => {
         try {
             const { amount, status, customer } = await invoicesAPI.find(id);
             setInvoice({ amount, status, customer: customer.id });
-            setLoading(false);
         } catch (error) {
             //todo: Flash notification error
             toast.error("Impossible de charger la facture demandée");

@@ -25,7 +25,7 @@ const InvoicesPage = props => {
     const [currentPage, setCurrentPage] = useState(1);
     const [search, setSearch] = useState("");
     const [loading, setLoading] = useState(true);
-    const itemsPerPage = 15;
+    
 
     const fetchInvoices = async () => {
         try {
@@ -67,7 +67,7 @@ const InvoicesPage = props => {
 
     // Gestion format du date 
     const formatDate = (str) => moment(str).format('DD/MM/YYYY');
-
+    const itemsPerPage = 8;
     // Gestion de la recherche:
     const filteredInvoices = invoices.filter(
         i =>
@@ -110,8 +110,7 @@ const InvoicesPage = props => {
                 </thead>
                 {!loading && (
                 <tbody>
-                    {paginatedInvoices.map(invoice => (
-                   <tr key={invoice.id}>
+                    {paginatedInvoices.map(invoice => <tr key={invoice.id}>
                         <td>{invoice.chron}</td>
                         <td>
                             <Link to={"/customers/" + invoice.customer.id}>{invoice.customer.firstName} {invoice.customer.lastName} </Link>
@@ -126,7 +125,7 @@ const InvoicesPage = props => {
                             <button className="btn btn-sm btn-danger"
                                 onClick={() => handleDelete(invoice.id)}>Supprimer</button>
                         </td>
-                    </tr>))}
+                    </tr>)}
 
                 </tbody>
                 )}
@@ -136,8 +135,8 @@ const InvoicesPage = props => {
             <Pagination
                 currentPage={currentPage}
                 itemsPerPage={itemsPerPage}
-                length={filteredInvoices.length}
                 onPageChanged={handlePageChange}
+                length={filteredInvoices.length}
             />
             )}
         </>

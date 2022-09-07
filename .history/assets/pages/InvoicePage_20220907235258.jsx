@@ -31,7 +31,6 @@ const InvoicePage = ({ history, match }) => {
         try {
             const data = await CustomersAPI.findAll();
             setCustomers(data);
-            setLoading(false);
             if (!invoice.customer) setInvoice({ ...invoice, customer: data[0].id });
         } catch (error) {
             toast.error("Impossible de charger les clients");
@@ -44,7 +43,6 @@ const InvoicePage = ({ history, match }) => {
         try {
             const { amount, status, customer } = await invoicesAPI.find(id);
             setInvoice({ amount, status, customer: customer.id });
-            setLoading(false);
         } catch (error) {
             //todo: Flash notification error
             toast.error("Impossible de charger la facture demandée");
@@ -108,7 +106,7 @@ const InvoicePage = ({ history, match }) => {
        
             {(editing && <h1>Modification d'une facture</h1>) || (<h1>Création d'une facture</h1>)}
             { loading && <FormContentLoader/>}
-            {!loading && <form onSubmit={handleSubmit}>
+            {!loading <form onSubmit={handleSubmit}>
 
                 <Field name="amount" type='number' placeholder="Montant de la facture" label="Montant" onChange={handleChange} value={invoice.amount} error={errors.amount} /><br></br>
 
@@ -130,7 +128,6 @@ const InvoicePage = ({ history, match }) => {
                     <Link to="/invoices" className="btn btn-link">Retour aux factures</Link>
                 </div>
             </form>
-    }
         </>
     );
 };

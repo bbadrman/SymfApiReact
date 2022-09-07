@@ -79,7 +79,6 @@ const InvoicePage = ({ history, match }) => {
             } else {
                  await invoicesAPI.create(invoice);
                 //Flash notification success
-                toast.success("La facure a bien été enregistrée");
                 history.replace("/invoices");
             }
 
@@ -93,7 +92,6 @@ const InvoicePage = ({ history, match }) => {
 
                 });
                 setErrors(apiErrors);
-                toast.error("Des erreurs dans votre formulaire");
             }
         }
     };

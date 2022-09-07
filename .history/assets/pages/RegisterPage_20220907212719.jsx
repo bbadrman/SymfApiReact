@@ -36,8 +36,6 @@ const RegisterPage = ({ history }) => {
         if (user.password !== user.passwordConfirm) {
             apiErrors.passwordConfirm = "Votre cofermation de mot de pass n'est pas confirme ";
             setErrors(apiErrors);
-
-            toast.error("Des erreurs dans votre fourmulaire!");
             return;
 
         }

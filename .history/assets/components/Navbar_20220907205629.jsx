@@ -9,7 +9,7 @@ const Navbar = ({ history}) => {
   const handleLogout = () => {
      AuthAPI.logout();
      setIsAuthenticated(false);
-     toast.info("Vous étes désormais déconnecté :)");
+     toast.w
      history.push("/login");
   }
     return (<nav className="navbar navbar-expand-lg navbar-light bg-light">

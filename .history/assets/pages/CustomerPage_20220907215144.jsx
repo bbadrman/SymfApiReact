@@ -59,13 +59,11 @@ const CustomerPage = ({match, history}) => {
         event.preventDefault();
 
         try {
-            setErrors({});
             if(editing){
                 await customersAPI.update(id, customer);
                
                 // TODO: Flash notification de succés
                 toast.success("Le client a bien été modifié");
-                history.replace("/customers");
            
             }else{
                 await customersAPI.create(customer);
@@ -73,7 +71,7 @@ const CustomerPage = ({match, history}) => {
                 toast.success("Le client a bien été crée");
                 history.replace("/customers");
             }
-            
+             setErrors({});
         } catch (response) {
             const {violations} = response.data;
             if (violations) {
@@ -83,7 +81,6 @@ const CustomerPage = ({match, history}) => {
                 });
 
                 setErrors(apiErrors);
-                toast.error("des erreurs dans votre formulaire !");
 
                 // TODO: Flash notification d'erreurs
             }

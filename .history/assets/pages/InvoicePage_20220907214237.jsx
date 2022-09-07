@@ -74,12 +74,10 @@ const InvoicePage = ({ history, match }) => {
             if (editing) {
                 await invoicesAPI.update(id, invoice);
                 //Flash notification success
-                toast.success("La facture a bien été modifiée");
                 history.replace("/invoices");
             } else {
                  await invoicesAPI.create(invoice);
                 //Flash notification success
-                toast.success("La facure a bien été enregistrée");
                 history.replace("/invoices");
             }
 
@@ -93,7 +91,6 @@ const InvoicePage = ({ history, match }) => {
 
                 });
                 setErrors(apiErrors);
-                toast.error("Des erreurs dans votre formulaire");
             }
         }
     };

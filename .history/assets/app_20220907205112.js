@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import { HashRouter, Route, Switch, withRouter } from "react-router-dom";
-import { toast, ToastContainer } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import './bootstrap';
 import Navbar from "./components/Navbar";
 import PrivateRoute from "./components/PrivateRoute";
@@ -15,7 +15,6 @@ import invoicesPage from "./pages/InvoicesPage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import AuthAPI from "./services/authAPI";
-import 'react-toastify/dist/ReactToastify.css';
 
 import './styles/app.css';
 
@@ -48,7 +47,7 @@ const App = () => {
                     </Switch>
                 </main>
             </HashRouter>
-            <ToastContainer position={toast.POSITION.BOTTOM_LEFT} />
+            <ToastContainer />
         </AuthContext.Provider>
     );
 };

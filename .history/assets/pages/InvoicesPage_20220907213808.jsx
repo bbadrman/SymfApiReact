@@ -30,7 +30,7 @@ const InvoicesPage = props => {
             const data = await InvoicesAPI.findAll();
             setInvoices(data);
         } catch (error) {
-           toast.error("Error lors du chargement des factures !");
+           toast.error("Error lors du chargement"
         }
     };
 

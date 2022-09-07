@@ -42,7 +42,7 @@ const InvoicePage = ({ history, match }) => {
             setInvoice({ amount, status, customer: customer.id });
         } catch (error) {
             //todo: Flash notification error
-            toast.error("Impossible de charger la facture demandée");
+            toast.error("Impossible de charger la facture demander");
             history.replace('/invoices');
         }
     };
@@ -74,12 +74,10 @@ const InvoicePage = ({ history, match }) => {
             if (editing) {
                 await invoicesAPI.update(id, invoice);
                 //Flash notification success
-                toast.success("La facture a bien été modifiée");
                 history.replace("/invoices");
             } else {
                  await invoicesAPI.create(invoice);
                 //Flash notification success
-                toast.success("La facure a bien été enregistrée");
                 history.replace("/invoices");
             }
 
@@ -93,7 +91,6 @@ const InvoicePage = ({ history, match }) => {
 
                 });
                 setErrors(apiErrors);
-                toast.error("Des erreurs dans votre formulaire");
             }
         }
     };

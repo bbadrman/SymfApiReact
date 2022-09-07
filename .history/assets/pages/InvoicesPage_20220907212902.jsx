@@ -30,7 +30,7 @@ const InvoicesPage = props => {
             const data = await InvoicesAPI.findAll();
             setInvoices(data);
         } catch (error) {
-           toast.error("Error lors du chargement des factures !");
+            console.log(error.response);
         }
     };
 
@@ -56,7 +56,7 @@ const InvoicesPage = props => {
             await InvoicesAPI.delete(id);
             toast.success("La facture a bien été supprimée");
         } catch (error) {
-            toast.error("Une erreur est survenue");
+            console.log(error.response);
             setInvoices(originalinvoices);
         }
     };

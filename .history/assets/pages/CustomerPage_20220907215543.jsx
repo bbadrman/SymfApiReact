@@ -65,7 +65,6 @@ const CustomerPage = ({match, history}) => {
                
                 // TODO: Flash notification de succés
                 toast.success("Le client a bien été modifié");
-                history.replace("/customers");
            
             }else{
                 await customersAPI.create(customer);

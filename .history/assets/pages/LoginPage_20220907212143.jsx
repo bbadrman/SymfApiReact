@@ -29,12 +29,11 @@ const LoginPage = ({ history}) => {
       await AuthAPI.authenticate(credentials);
       setError("");
       setIsAuthenticated(true);
-      toast.success("Vous étes connecter !");
+      toast.success("Vous étes connecter");
       history.replace("/customers");
 
     } catch (error) {
       setError("Aucun compte ne posséde cet compte ou alors les infomrations ne correspondant pas!");
-    toast.error("Une erreur est survenue");
     }
   };
 

@@ -12,7 +12,6 @@ import HomePage from "./pages/HomePage";
 import InvoicePage from "./pages/InvoicePage";
 import invoicesPage from "./pages/InvoicesPage";
 import LoginPage from "./pages/LoginPage";
-import RegisterPage from "./pages/RegisterPage";
 import AuthAPI from "./services/authAPI";
 
 import './styles/app.css';

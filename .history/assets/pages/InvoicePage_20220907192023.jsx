@@ -97,7 +97,7 @@ const InvoicePage = ({ history, match }) => {
             {(editing && <h1>Modification d'une facture</h1>) || (<h1>Création d'une facture</h1>)}
             <form onSubmit={handleSubmit}>
 
-                <Field name="amount" type='number' placeholder="Montant de la facture" label="Montant" onChange={handleChange} value={invoice.amount} error={errors.amount} /><br></br>
+                <Field name="amount" type='number' placeholder="Montant de la facture" label="Montant" onChange={handleChange} value={invoice.amount} error={errors.amount} /><br>
 
                 <Select name="customer" label="Client" value={invoice.customer} onChange={handleChange} error={errors.customer} >
                     {customers.map(customer => (
@@ -105,7 +105,7 @@ const InvoicePage = ({ history, match }) => {
                             {customer.firstName} {customer.lastName}
                         </option>
                     ))}
-                </Select><br></br>
+                </Select>
 
                 <Select name="status" label="Statut" value={invoice.status} error={errors.status} onChange={handleChange} >
                     <option value="SENT">Enoyée</option>

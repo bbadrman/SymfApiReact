@@ -105,7 +105,7 @@ const InvoicePage = ({ history, match }) => {
                             {customer.firstName} {customer.lastName}
                         </option>
                     ))}
-                </Select><br></br>
+                </Select>
 
                 <Select name="status" label="Statut" value={invoice.status} error={errors.status} onChange={handleChange} >
                     <option value="SENT">Enoyée</option>

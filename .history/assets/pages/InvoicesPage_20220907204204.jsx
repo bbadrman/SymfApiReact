@@ -107,7 +107,7 @@ const InvoicesPage = props => {
                     {paginatedInvoices.map(invoice => <tr key={invoice.id}>
                         <td>{invoice.chron}</td>
                         <td>
-                            <Link to={"/customers/" + invoice.customer.id}>{invoice.customer.firstName} {invoice.customer.lastName} </Link>
+                            <Link to={"/customers/" + }>{invoice.customer.firstName} {invoice.customer.lastName} </a>
                         </td>
                         <td>{formatDate(invoice.sentAt)}</td>
                         <td className="text-center">

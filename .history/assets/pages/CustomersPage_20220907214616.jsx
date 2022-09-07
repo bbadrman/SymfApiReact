@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { toast } from 'react-toastify';
 import Pagination from '../components/Pagination';
 import CustomersAPI from '../services/customersAPI';
 
@@ -33,12 +32,8 @@ const CustomersPage = props => {
 
         try {
             await CustomersAPI.delete(id);
-            toast.success("Le client a bien été supprimé");
-           
         } catch (error) {
             setCustomers(originalCustomers);
-            toast.error("la suppression du client n'a pas pu fonctionner");
-           
         }
     };
 

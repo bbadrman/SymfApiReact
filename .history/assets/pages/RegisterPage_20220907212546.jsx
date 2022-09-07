@@ -36,8 +36,6 @@ const RegisterPage = ({ history }) => {
         if (user.password !== user.passwordConfirm) {
             apiErrors.passwordConfirm = "Votre cofermation de mot de pass n'est pas confirme ";
             setErrors(apiErrors);
-
-            toast.error("Des erreurs dans votre fourmulaire!");
             return;
 
         }
@@ -47,7 +45,7 @@ const RegisterPage = ({ history }) => {
             
             setErrors({});
             //todo: flass success 
-            toast.success("Vous étes désormais inscrire, vous pouvez vous connecter!")
+            toast.success("Vous étes désorm")
             history.push('/login');
         } catch (error) {
 
@@ -60,7 +58,6 @@ const RegisterPage = ({ history }) => {
                 });
                 setErrors(apiErrors);
             }
-            toast.error("Des erreurs dans votre fourmulaire!");
         }
     };
 

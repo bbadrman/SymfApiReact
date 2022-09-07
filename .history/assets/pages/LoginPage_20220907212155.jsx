@@ -34,7 +34,6 @@ const LoginPage = ({ history}) => {
 
     } catch (error) {
       setError("Aucun compte ne posséde cet compte ou alors les infomrations ne correspondant pas!");
-    toast.error("Une erreur est survenue");
     }
   };
 

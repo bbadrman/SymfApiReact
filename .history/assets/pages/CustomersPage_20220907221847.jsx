@@ -12,16 +12,16 @@ const CustomersPage = props => {
     const [currentPage, setCurrentPage] = useState(1);
     const [search, setSearch] = useState("");
     const [loading, setLoading] = useState(true);
-    const itemsPerPage = 8;
+
 
     // permet d'aller récupérer les customers
     const fetchCustomers = async () => {
         try {
             const data = await CustomersAPI.findAll();
             setCustomers(data);
-            setLoading(false);
         } catch (error) {
-            toast.error("Impossible de charger les clients");     
+            toast.error("Impossible de charger les clients");
+           
         }
     }
   
@@ -55,7 +55,7 @@ const CustomersPage = props => {
 
     };
     // changer les nombre customer par page on a 8 
-    
+    const itemsPerPage = 8;
 
     //Filterage des customers en fonction de la recherche
     const filteredCustomers = customers.filter(
@@ -95,7 +95,6 @@ const CustomersPage = props => {
 
                     </tr>
                 </thead>
-                {!loading && (
                 <tbody>
                     {paginatedCustomers.map(customer => (
                         <tr key={customer.id}>
@@ -119,9 +118,8 @@ const CustomersPage = props => {
                         </tr>))}
 
                 </tbody>
-                )}
             </table>
-            {loading && <TableLoader />}
+            <TableLoader />
             {itemsPerPage < filteredCustomers.length && (
                 <Pagination
                     currentPage={currentPage}

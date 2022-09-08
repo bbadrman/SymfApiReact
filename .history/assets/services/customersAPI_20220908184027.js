@@ -2,18 +2,6 @@ import axios from 'axios';
 import Cache from './cache';
 import {CUSTOMERS_API} from '../config';
 
-async function findAll() {
-    const cachedCustomers = await Cache.get("customers");
-    if (cachedCustomers) return cachedCustomers;
-    return axios
-        .get(CUSTOMERS_API)
-        .then(response => {
-            const customers = response.data["hydra:member"];
-            Cache.set("customers", customers);
-            return customers;
-        });
-}
-
 async function find(id) {
     const cachedCustomers = await Cache.get("customers." + id);
     
@@ -28,6 +16,17 @@ async function find(id) {
     });
 }
 
+async function findAll() {
+    const cachedCustomers = await Cache.get("customers");
+    if (cachedCustomers) return cachedCustomers;
+    return axios
+        .get('CUSTOMERS_API')
+        .then(response => {
+            const customers = response.data["hydra:member"];
+            Cache.set("customers", customers);
+            return customers;
+        });
+}
 
 function deleteCustomer(id) {
     return axios

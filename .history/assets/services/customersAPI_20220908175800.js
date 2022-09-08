@@ -52,6 +52,7 @@ function update(id, customer) {
             
             if (cachedCustomers) {
                 const index = cachedCustomers.findIndex(c => c.id === +id);
+
                 cachedCustomers[index] = response.data;    
                     // Cache.set("customers",  cachedCustomers);
             }

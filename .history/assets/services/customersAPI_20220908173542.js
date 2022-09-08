@@ -1,18 +1,11 @@
 import axios from 'axios';
 import Cache from './cache';
 
-async function find(id) {
-    const cachedCustomers = await Cache.get("customers." + id);
-    
-    if(cachedCustomers) return cachedCustomers;
+function find(id) {
+
     return axios
         .get("http://localhost:89/api/customers/" + id)
-        .then(response => { 
-            const customer = response.data;
-
-            Cache.set("customers", id, customer);
-        return customer;
-    });
+        .then(response => response.data);
 }
 
 async function findAll() {
@@ -40,26 +33,25 @@ function deleteCustomer(id) {
 }
 
 function update(id, customer) {
-    return axios
-        .put("http://localhost:89/api/customers/" + id, customer)
+    return axios.put("http://localhost:89/api/customers/" + id, customer)
         .then(async response => {
             const cachedCustomers = await Cache.get("customers");
-            const cachedCustomer = await Cache.get("customers." +id);
-
-            if (cachedCustomer) {
-                Cache.set("customers." +id, response.data);
-            }
             
             if (cachedCustomers) {
                 const index = cachedCustomers.findIndex(c => c.id === +id);
-                cachedCustomers[index] = response.data;    
-                    // Cache.set("customers",  cachedCustomers);
+
+                const newCachedCustomer = response.data;
+
+                cachedCustomers[index] = newCachedCustomer;
+
+                
+                    Cache.set("customers",  cachedCustomers);
+              
             }
             return response;
         });
 
 }
-
 function create(customer) {
     return axios.post("http://localhost:89/api/customers", customer)
         .then(async response => {

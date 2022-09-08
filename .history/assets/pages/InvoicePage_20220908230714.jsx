@@ -54,7 +54,7 @@ const InvoicePage = ({ history, match }) => {
 
     // récupération de la lisete des clients a chaque chargement du composant 
     useEffect(() => {
-        fetchCustomers();
+        fetchCustomers()
     }, []);
 
     // recuperation de la bonne facture quand l'identifiant de l'url chnage
@@ -66,8 +66,9 @@ const InvoicePage = ({ history, match }) => {
     }, [id]);
 
     // Gestion du changements des inputs dans le formulaire
-    const handleChange = (event) => {
-        setInvoice({ ...invoice,sentAt: new Date(), chron:Math.floor(Math.random() * 10),  [event.target.name]: event.target.value });
+    const handleChange = ({ currentTarget }) => {
+        const { name, value } = currentTarget;
+        setInvoice({ ...invoice, [name]: value });
     };
 
     // Gestion de la soumission du formulaire

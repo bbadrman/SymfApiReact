@@ -8,9 +8,7 @@ async function find(id) {
     return axios
         .get("http://localhost:89/api/customers/" + id)
         .then(response => { 
-            const customer = response.data;
-
-            Cache.set("customers", id, customer);
+            const customer = response.data
         return customer;
     });
 }
@@ -40,26 +38,23 @@ function deleteCustomer(id) {
 }
 
 function update(id, customer) {
-    return axios
-        .put("http://localhost:89/api/customers/" + id, customer)
+    return axios.put("http://localhost:89/api/customers/" + id, customer)
         .then(async response => {
             const cachedCustomers = await Cache.get("customers");
-            const cachedCustomer = await Cache.get("customers." +id);
-
-            if (cachedCustomer) {
-                Cache.set("customers." +id, response.data);
-            }
             
             if (cachedCustomers) {
                 const index = cachedCustomers.findIndex(c => c.id === +id);
-                cachedCustomers[index] = response.data;    
+
+                cachedCustomers[index] = response.data;
+
+                
                     // Cache.set("customers",  cachedCustomers);
+              
             }
             return response;
         });
 
 }
-
 function create(customer) {
     return axios.post("http://localhost:89/api/customers", customer)
         .then(async response => {

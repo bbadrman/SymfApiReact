@@ -40,8 +40,7 @@ function deleteCustomer(id) {
 }
 
 function update(id, customer) {
-    return axios
-        .put("http://localhost:89/api/customers/" + id, customer)
+    return axios.put("http://localhost:89/api/customers/" + id, customer)
         .then(async response => {
             const cachedCustomers = await Cache.get("customers");
             const cachedCustomer = await Cache.get("customers." +id);
@@ -52,14 +51,17 @@ function update(id, customer) {
             
             if (cachedCustomers) {
                 const index = cachedCustomers.findIndex(c => c.id === +id);
-                cachedCustomers[index] = response.data;    
+
+                cachedCustomers[index] = response.data;
+
+                
                     // Cache.set("customers",  cachedCustomers);
+              
             }
             return response;
         });
 
 }
-
 function create(customer) {
     return axios.post("http://localhost:89/api/customers", customer)
         .then(async response => {

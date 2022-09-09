@@ -88,7 +88,7 @@
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
             "assets:install %PUBLIC_DIR%": "symfony-cmd",
-            "doctrine:migrations:migrations --no-interaction": "symfony-cmd"
+            "doctrine:migrations:migrations --no-interaction"
         },
         "post-install-cmd": [
             "@auto-scripts"

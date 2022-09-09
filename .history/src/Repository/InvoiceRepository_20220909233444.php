@@ -33,7 +33,7 @@ class InvoiceRepository extends ServiceEntityRepository
             ->getQuery()
             ->getSingleScalarResult() +1;
         } catch (\Exception $e) {
-            return 1;
+            
         }
        
 
